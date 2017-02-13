@@ -14,4 +14,4 @@ Colony Wars is a time based strategy game that requires usage of a considerable 
 
 ## Built With
 
-*[Java](https://www.java.com)
+* [Java](https://www.java.com)
