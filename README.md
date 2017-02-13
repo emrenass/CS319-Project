@@ -8,6 +8,6 @@ Colony Wars is a time based strategy game that requires usage of a considerable 
 ## Contributors
 
 * [Ahmet Emre Nas](https://github.com/emrenass)
-* [Ýzel Gürbüz](https://github.com/izelgurbuz)
-* [Kaan Çakmak](https://github.com/kaancakmak)
-* [Ýbrahim Taha Aksu](https://github.com/cuthalionn)
+* [Ä°zel GÃ¼rbÃ¼z](https://github.com/izelgurbuz)
+* [Kaan Ã‡akmak](https://github.com/kaancakmak)
+* [Ä°brahim Taha Aksu](https://github.com/cuthalionn)
