@@ -42,24 +42,15 @@ public class LoadGameWindow extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mapLocationLabel1 = new Controller.MapLocationLabel();
         backButton = new javax.swing.JButton();
-        mapLocationLabel2 = new Controller.MapLocationLabel();
-        mapLocationLabel3 = new Controller.MapLocationLabel();
-        mapLocationLabel4 = new Controller.MapLocationLabel();
-        mapLocationLabel5 = new Controller.MapLocationLabel();
-        level1 = new java.awt.Label();
-        level2 = new java.awt.Label();
-        level3 = new java.awt.Label();
-        level4 = new java.awt.Label();
-        level5 = new java.awt.Label();
+        mapLocationLabel1 = new Controller.MapLocationLabel(1);
+        mapLocationLabel2 = new Controller.MapLocationLabel(2);
+        mapLocationLabel3 = new Controller.MapLocationLabel(3);
+        mapLocationLabel4 = new Controller.MapLocationLabel(4);
+        mapLocationLabel5 = new Controller.MapLocationLabel(5);
 
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-
-        mapLocationLabel1.setMaximumSize(new java.awt.Dimension(64, 64));
-        mapLocationLabel1.setMinimumSize(new java.awt.Dimension(64, 64));
-        mapLocationLabel1.setPreferredSize(new java.awt.Dimension(64, 64));
 
         backButton.setText("Back");
         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -68,129 +59,167 @@ public class LoadGameWindow extends javax.swing.JPanel {
             }
         });
 
-        mapLocationLabel2.setMaximumSize(new java.awt.Dimension(64, 64));
-        mapLocationLabel2.setMinimumSize(new java.awt.Dimension(64, 64));
-        mapLocationLabel2.setPreferredSize(new java.awt.Dimension(64, 64));
+        mapLocationLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mapLocationLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        mapLocationLabel1.setMaximumSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel1.setMinimumSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel1.setPreferredSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mapLocationLabel1MouseClicked(evt);
+            }
+        });
 
-        mapLocationLabel3.setMaximumSize(new java.awt.Dimension(64, 64));
-        mapLocationLabel3.setMinimumSize(new java.awt.Dimension(64, 64));
-        mapLocationLabel3.setPreferredSize(new java.awt.Dimension(64, 64));
+        mapLocationLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mapLocationLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        mapLocationLabel2.setMaximumSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel2.setMinimumSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel2.setPreferredSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mapLocationLabel2MouseClicked(evt);
+            }
+        });
 
-        mapLocationLabel4.setMaximumSize(new java.awt.Dimension(64, 64));
-        mapLocationLabel4.setMinimumSize(new java.awt.Dimension(64, 64));
-        mapLocationLabel4.setPreferredSize(new java.awt.Dimension(64, 64));
+        mapLocationLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mapLocationLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        mapLocationLabel3.setMaximumSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel3.setMinimumSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel3.setPreferredSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mapLocationLabel3MouseClicked(evt);
+            }
+        });
 
-        mapLocationLabel5.setMaximumSize(new java.awt.Dimension(64, 64));
-        mapLocationLabel5.setMinimumSize(new java.awt.Dimension(64, 64));
-        mapLocationLabel5.setPreferredSize(new java.awt.Dimension(64, 64));
+        mapLocationLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mapLocationLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        mapLocationLabel4.setMaximumSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel4.setMinimumSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel4.setPreferredSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mapLocationLabel4MouseClicked(evt);
+            }
+        });
 
-        level1.setText("Level 1");
-
-        level2.setText("Level 2");
-
-        level3.setText("Level 3");
-
-        level4.setText("Level 4");
-
-        level5.setText("Level 5");
+        mapLocationLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mapLocationLabel5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        mapLocationLabel5.setMaximumSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel5.setMinimumSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel5.setPreferredSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mapLocationLabel5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(247, 247, 247)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mapLocationLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(level2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mapLocationLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(level4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(mapLocationLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(level5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(131, 131, 131))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(level1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85)
+                .addComponent(mapLocationLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(level3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mapLocationLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(285, 285, 285))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(90, 90, 90)
-                    .addComponent(mapLocationLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(646, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(450, Short.MAX_VALUE)
-                    .addComponent(mapLocationLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(286, 286, 286)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mapLocationLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(238, 238, 238))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(269, 269, 269)
+                .addComponent(mapLocationLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
+                .addComponent(mapLocationLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(128, 128, 128))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
-                .addComponent(mapLocationLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(level5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(mapLocationLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(level2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(mapLocationLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(82, 82, 82)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(level1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(level3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(98, 98, 98))
+                        .addComponent(mapLocationLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(mapLocationLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(level4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(215, 215, 215))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(415, Short.MAX_VALUE)
-                    .addComponent(mapLocationLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(121, 121, 121)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(408, Short.MAX_VALUE)
-                    .addComponent(mapLocationLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(128, 128, 128)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(mapLocationLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(134, 134, 134))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(mapLocationLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(102, 102, 102)
+                                .addComponent(mapLocationLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(76, 76, 76))))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMousePressed
         frame.setContentPane(panel);
         frame.setVisible(true);
+        
     }//GEN-LAST:event_backButtonMousePressed
+
+    private void mapLocationLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel1MouseClicked
+        
+        GameView gw = new GameView(mapLocationLabel1.getLevelNumber());
+        gw.copyFrameMain(frame);
+        gw.copyContentPaneMain(panel);
+        gw.Start();
+        frame.setContentPane(gw);
+        frame.setVisible(true);
+    }//GEN-LAST:event_mapLocationLabel1MouseClicked
+
+    private void mapLocationLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel2MouseClicked
+        GameView gw = new GameView(mapLocationLabel2.getLevelNumber());
+        gw.copyFrameMain(frame);
+        gw.copyContentPaneMain(panel);
+        gw.Start();
+        frame.setContentPane(gw);
+        frame.setVisible(true);
+    }//GEN-LAST:event_mapLocationLabel2MouseClicked
+
+    private void mapLocationLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel3MouseClicked
+        GameView gw = new GameView(mapLocationLabel3.getLevelNumber());
+        gw.copyFrameMain(frame);
+        gw.copyContentPaneMain(panel);
+        gw.Start();
+        frame.setContentPane(gw);
+        frame.setVisible(true);
+    }//GEN-LAST:event_mapLocationLabel3MouseClicked
+
+    private void mapLocationLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel4MouseClicked
+        GameView gw = new GameView(mapLocationLabel4.getLevelNumber());
+        gw.copyFrameMain(frame);
+        gw.copyContentPaneMain(panel);
+        gw.Start();
+        frame.setContentPane(gw);
+        frame.setVisible(true);
+    }//GEN-LAST:event_mapLocationLabel4MouseClicked
+
+    private void mapLocationLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel5MouseClicked
+        GameView gw = new GameView(mapLocationLabel5.getLevelNumber());
+        gw.copyFrameMain(frame);
+        gw.copyContentPaneMain(panel);
+        gw.Start();
+        frame.setContentPane(gw);
+        frame.setVisible(true);
+    }//GEN-LAST:event_mapLocationLabel5MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
-    private java.awt.Label level1;
-    private java.awt.Label level2;
-    private java.awt.Label level3;
-    private java.awt.Label level4;
-    private java.awt.Label level5;
     private Controller.MapLocationLabel mapLocationLabel1;
     private Controller.MapLocationLabel mapLocationLabel2;
     private Controller.MapLocationLabel mapLocationLabel3;

@@ -54,22 +54,22 @@ public class CreditsWindow extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(0, 255, 220));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Ahmet Emre Nas");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 66, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(0, 255, 220));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("İbrahim Taha Aksu");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 102, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 120, -1, -1));
 
         jLabel3.setForeground(new java.awt.Color(0, 255, 220));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Kaan Çakmak");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 138, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, -1, -1));
 
         jLabel4.setForeground(new java.awt.Color(0, 255, 220));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("İzel Gürbüz");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 174, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
 
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {

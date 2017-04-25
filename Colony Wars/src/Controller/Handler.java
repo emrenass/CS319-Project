@@ -55,5 +55,9 @@ public class Handler
     public ArrayList<GameObject> getObject() {
         return object;
     }
+
+    public void resetAll() {
+        object = new ArrayList<GameObject>();
+    }
     
 }

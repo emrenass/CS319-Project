@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package Controller;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -18,14 +20,18 @@ import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.border.Border;
 
 /**
  *
  * @author taha
  */
 public class Building extends GameObject implements MouseListener{
+    
     
     private Army army;
     private Player possessor;
@@ -34,6 +40,8 @@ public class Building extends GameObject implements MouseListener{
     private boolean clicked = false;
     Timer timer = new Timer();
     private BufferedImage buildingImage;
+    Border blueBorder = BorderFactory.createLineBorder(Color.blue,5, true);
+    Border redBorder = BorderFactory.createLineBorder(Color.red,5);
     public Building(float x, float y, Handler handler, ObjectId id,Army army, Player possessor, String buildingType,boolean isIdle) {
         super(x, y, handler, id);
         this.possessor = possessor;
@@ -43,26 +51,35 @@ public class Building extends GameObject implements MouseListener{
         this.buildingType=buildingType;
         loadImage();
         setSize(32,32);
+        
         addMouseListener(new MouseAdapter(){
                         @Override
 			public void mousePressed(MouseEvent me){
                             if(clicked==false){
                                 clicked = true;
+                                System.out.println(clicked);
                             }
                             else{
                                 clicked = false;
+                                System.out.println("Else girdi");
                             }
-                            
 			}
 		});
         buildingChecker();
         
     }
+    public void addBorder(){
+        setBorder(blueBorder);
+    }
+    public void removeBorder(){
+        setBorder(BorderFactory.createEmptyBorder());
+    }
     public void increaseArmySize()
     {
         
         army.setSize(army.getArmySize()+army.getProductionRate());
-        
+        setText(String.valueOf(army.getArmySize()));
+        setForeground (Color.yellow);
     }
     public Army moveToBase(Building building){
         Army army2= army.copy();//moving army
@@ -215,8 +232,8 @@ public class Building extends GameObject implements MouseListener{
             if(incomingArmy.getArmySize()*incomingArmy.getDamage()>army.getArmySize()*army.getDamage())
             {
                 possessor = incomingArmy.getPlayer();
-                army.setSize ((int)(((incomingArmy.getArmySize()*incomingArmy.getDamage()-army.getArmySize()*army.getDamage()))/(incomingArmy.getDamage())));
-                army.setPlayer(possessor);
+                incomingArmy.setSize ((int)(((incomingArmy.getArmySize()*incomingArmy.getDamage()-army.getArmySize()*army.getDamage()))/(incomingArmy.getDamage())));
+                this.setArmy(incomingArmy);
                 
                 //The building image should change here
                 if(possessor.toString().equalsIgnoreCase("player"))

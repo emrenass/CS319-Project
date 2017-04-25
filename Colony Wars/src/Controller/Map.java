@@ -9,17 +9,18 @@ public class Map {
     protected BufferedImage image;
     protected int mapNo;
     private ArrayList<GameObject> objectList;
-    protected GameView gameView;
+    GameView gw;
     protected int width,height;
     Handler handler;
     ArrayList<Building> listB;
     Player player,AI;
 
-    public Map(int mapNo, GameView gameView, Handler handler, ArrayList<Building> listB,Player player, Player AI) {
+    public Map(int mapNo,GameView gw, Handler handler, ArrayList<Building> listB,Player player, Player AI) {
         this.mapNo = mapNo;
-        this.gameView = gameView;
         this.handler = handler;
+        this.gw=gw;
         this.listB = listB;
+        listB.removeAll(listB);
         this.player = player;
         this.AI = AI;
         
@@ -28,13 +29,16 @@ public class Map {
         if(this.mapNo==1)
             image=loader.loadImage("/Map1.png");
         
+        if(this.mapNo==2)
+            image=loader.loadImage("/Untitled.png");
         
-        LoadImageLevel(image);
+       LoadImageLevel(image);
     }
   
     
     public void LoadImageLevel(BufferedImage image)
     {
+        
         int w = image.getWidth();
         int h = image.getHeight();
         
@@ -60,20 +64,20 @@ public class Map {
                     army.setPlayer(AI);
                     army.setProperties(AI.getNation());
                     Building b = new Building(xx*32, yy*32,handler, ObjectId.Building, army, AI, "enemyArsenal",false);
+                    b.setBounds(xx*32, yy*32, 32, 32);
                     handler.addObject(b);
                     listB.add(b);
-                    b.setBounds(xx*32, yy*32, 32, 32);
-                    gameView.add(b);
+                    gw.add(b);
                 }
                 if(red==22 && green == 34 && blue == 255){
                     //set army properties according to nation of the player here
                     army.setPlayer(player);
                     army.setProperties(player.getNation());
                     Building b = new Building(xx*32, yy*32,handler, ObjectId.Building, army, player, "playerHospital",false);
+                    b.setBounds(xx*32, yy*32, 32, 32);
                     handler.addObject(b);
                     listB.add(b);
-                    b.setBounds(xx*32, yy*32, 32, 32);
-                    gameView.add(b);
+                    gw.add(b);
                 }
             }
         }
