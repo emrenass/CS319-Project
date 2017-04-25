@@ -29,7 +29,7 @@ public class PauseMenu extends javax.swing.JPanel {
 
         soundSettingsButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
-        resumeButton2 = new javax.swing.JButton();
+        resumeButton = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(200, 400));
         setMinimumSize(new java.awt.Dimension(200, 400));
@@ -51,11 +51,11 @@ public class PauseMenu extends javax.swing.JPanel {
             }
         });
 
-        resumeButton2.setText("Resume");
-        resumeButton2.setToolTipText("");
-        resumeButton2.addActionListener(new java.awt.event.ActionListener() {
+        resumeButton.setText("Resume");
+        resumeButton.setToolTipText("");
+        resumeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resumeButton2ActionPerformed(evt);
+                resumeButtonActionPerformed(evt);
             }
         });
 
@@ -68,14 +68,14 @@ public class PauseMenu extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(soundSettingsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(resumeButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(resumeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(resumeButton2)
+                .addComponent(resumeButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(soundSettingsButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -92,14 +92,14 @@ public class PauseMenu extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_exitButtonActionPerformed
 
-    private void resumeButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resumeButton2ActionPerformed
+    private void resumeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resumeButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_resumeButton2ActionPerformed
+    }//GEN-LAST:event_resumeButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exitButton;
-    private javax.swing.JButton resumeButton2;
+    private javax.swing.JButton resumeButton;
     private javax.swing.JButton soundSettingsButton;
     // End of variables declaration//GEN-END:variables
 }

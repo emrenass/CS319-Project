@@ -32,7 +32,7 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="soundSettingsButton" max="32767" attributes="0"/>
                   <Component id="exitButton" max="32767" attributes="0"/>
-                  <Component id="resumeButton2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="resumeButton" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
           </Group>
@@ -42,7 +42,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-              <Component id="resumeButton2" min="-2" max="-2" attributes="0"/>
+              <Component id="resumeButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="soundSettingsButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -71,13 +71,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="resumeButton2">
+    <Component class="javax.swing.JButton" name="resumeButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Resume"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resumeButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resumeButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

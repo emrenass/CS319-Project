@@ -26,6 +26,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 /**
  *
@@ -56,6 +57,7 @@ public class GameView extends JPanel implements Runnable
     ArrayList<JLabel> movingLabels = new ArrayList<JLabel>();
     Player player;
     Player AI;
+    PauseMenu pause = new PauseMenu();
     
     
     public static int WIDTH, HEIGHT;
@@ -89,6 +91,7 @@ public class GameView extends JPanel implements Runnable
     {
         removeAll();
         setLayout(null);
+        pause.setBounds(300, 100, 200, 400);
         
         WIDTH = getWidth();
         HEIGHT = getHeight();
@@ -110,13 +113,19 @@ public class GameView extends JPanel implements Runnable
             public void actionPerformed(ActionEvent e) {
                 if(!paused)
                 {
-                    
+                    add(pause);
+                    validate();
+                    repaint();
                     thread.suspend();
                     paused=true;
                     pauseButton.setText("Resume");
+                    
                 }
                 else
                 {
+                    remove(pause);
+                    validate();
+                    repaint();
                     thread.resume();
                     paused=false;
                     pauseButton.setText("Pause");
