@@ -106,6 +106,12 @@
           <Dimension value="[64, 84]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mapLocationLabel1MouseClicked"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Controller.MapLocationLabel(1)"/>
+      </AuxValues>
     </Component>
     <Component class="Controller.MapLocationLabel" name="mapLocationLabel2">
       <Properties>
@@ -121,6 +127,12 @@
           <Dimension value="[64, 84]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mapLocationLabel2MouseClicked"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Controller.MapLocationLabel(2)"/>
+      </AuxValues>
     </Component>
     <Component class="Controller.MapLocationLabel" name="mapLocationLabel3">
       <Properties>
@@ -136,6 +148,12 @@
           <Dimension value="[64, 84]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mapLocationLabel3MouseClicked"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Controller.MapLocationLabel(3)"/>
+      </AuxValues>
     </Component>
     <Component class="Controller.MapLocationLabel" name="mapLocationLabel4">
       <Properties>
@@ -151,6 +169,12 @@
           <Dimension value="[64, 84]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mapLocationLabel4MouseClicked"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Controller.MapLocationLabel(4)"/>
+      </AuxValues>
     </Component>
     <Component class="Controller.MapLocationLabel" name="mapLocationLabel5">
       <Properties>
@@ -166,6 +190,12 @@
           <Dimension value="[64, 84]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mapLocationLabel5MouseClicked"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Controller.MapLocationLabel(5)"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

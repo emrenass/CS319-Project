@@ -43,11 +43,11 @@ public class LoadGameWindow extends javax.swing.JPanel {
     private void initComponents() {
 
         backButton = new javax.swing.JButton();
-        mapLocationLabel1 = new Controller.MapLocationLabel();
-        mapLocationLabel2 = new Controller.MapLocationLabel();
-        mapLocationLabel3 = new Controller.MapLocationLabel();
-        mapLocationLabel4 = new Controller.MapLocationLabel();
-        mapLocationLabel5 = new Controller.MapLocationLabel();
+        mapLocationLabel1 = new Controller.MapLocationLabel(1);
+        mapLocationLabel2 = new Controller.MapLocationLabel(2);
+        mapLocationLabel3 = new Controller.MapLocationLabel(3);
+        mapLocationLabel4 = new Controller.MapLocationLabel(4);
+        mapLocationLabel5 = new Controller.MapLocationLabel(5);
 
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -64,30 +64,55 @@ public class LoadGameWindow extends javax.swing.JPanel {
         mapLocationLabel1.setMaximumSize(new java.awt.Dimension(64, 84));
         mapLocationLabel1.setMinimumSize(new java.awt.Dimension(64, 84));
         mapLocationLabel1.setPreferredSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mapLocationLabel1MouseClicked(evt);
+            }
+        });
 
         mapLocationLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mapLocationLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         mapLocationLabel2.setMaximumSize(new java.awt.Dimension(64, 84));
         mapLocationLabel2.setMinimumSize(new java.awt.Dimension(64, 84));
         mapLocationLabel2.setPreferredSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mapLocationLabel2MouseClicked(evt);
+            }
+        });
 
         mapLocationLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mapLocationLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         mapLocationLabel3.setMaximumSize(new java.awt.Dimension(64, 84));
         mapLocationLabel3.setMinimumSize(new java.awt.Dimension(64, 84));
         mapLocationLabel3.setPreferredSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mapLocationLabel3MouseClicked(evt);
+            }
+        });
 
         mapLocationLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mapLocationLabel4.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         mapLocationLabel4.setMaximumSize(new java.awt.Dimension(64, 84));
         mapLocationLabel4.setMinimumSize(new java.awt.Dimension(64, 84));
         mapLocationLabel4.setPreferredSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mapLocationLabel4MouseClicked(evt);
+            }
+        });
 
         mapLocationLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mapLocationLabel5.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         mapLocationLabel5.setMaximumSize(new java.awt.Dimension(64, 84));
         mapLocationLabel5.setMinimumSize(new java.awt.Dimension(64, 84));
         mapLocationLabel5.setPreferredSize(new java.awt.Dimension(64, 84));
+        mapLocationLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mapLocationLabel5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -143,7 +168,54 @@ public class LoadGameWindow extends javax.swing.JPanel {
     private void backButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMousePressed
         frame.setContentPane(panel);
         frame.setVisible(true);
+        
     }//GEN-LAST:event_backButtonMousePressed
+
+    private void mapLocationLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel1MouseClicked
+        
+        GameView gw = new GameView(mapLocationLabel1.getLevelNumber());
+        gw.copyFrameMain(frame);
+        gw.copyContentPaneMain(panel);
+        gw.Start();
+        frame.setContentPane(gw);
+        frame.setVisible(true);
+    }//GEN-LAST:event_mapLocationLabel1MouseClicked
+
+    private void mapLocationLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel2MouseClicked
+        GameView gw = new GameView(mapLocationLabel2.getLevelNumber());
+        gw.copyFrameMain(frame);
+        gw.copyContentPaneMain(panel);
+        gw.Start();
+        frame.setContentPane(gw);
+        frame.setVisible(true);
+    }//GEN-LAST:event_mapLocationLabel2MouseClicked
+
+    private void mapLocationLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel3MouseClicked
+        GameView gw = new GameView(mapLocationLabel3.getLevelNumber());
+        gw.copyFrameMain(frame);
+        gw.copyContentPaneMain(panel);
+        gw.Start();
+        frame.setContentPane(gw);
+        frame.setVisible(true);
+    }//GEN-LAST:event_mapLocationLabel3MouseClicked
+
+    private void mapLocationLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel4MouseClicked
+        GameView gw = new GameView(mapLocationLabel4.getLevelNumber());
+        gw.copyFrameMain(frame);
+        gw.copyContentPaneMain(panel);
+        gw.Start();
+        frame.setContentPane(gw);
+        frame.setVisible(true);
+    }//GEN-LAST:event_mapLocationLabel4MouseClicked
+
+    private void mapLocationLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel5MouseClicked
+        GameView gw = new GameView(mapLocationLabel5.getLevelNumber());
+        gw.copyFrameMain(frame);
+        gw.copyContentPaneMain(panel);
+        gw.Start();
+        frame.setContentPane(gw);
+        frame.setVisible(true);
+    }//GEN-LAST:event_mapLocationLabel5MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

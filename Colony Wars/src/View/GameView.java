@@ -45,6 +45,7 @@ public class GameView extends JPanel implements Runnable
     private BufferedImage background = null;
     Handler handler = new Handler();
     private int clickCount = 0;
+    private int levelNo=1;
     //trying
     JLabel label;
     ArrayList<Building> actionBuildings = new ArrayList<Building>();
@@ -58,6 +59,14 @@ public class GameView extends JPanel implements Runnable
     
     
     public static int WIDTH, HEIGHT;
+    
+    public GameView(){
+        
+    }
+    
+    public GameView(int levelNo){
+        this.levelNo=levelNo;
+    }
     public synchronized void Start()
     {
         if(running)
@@ -78,7 +87,9 @@ public class GameView extends JPanel implements Runnable
     
     public void init()
     {
+        removeAll();
         setLayout(null);
+        
         WIDTH = getWidth();
         HEIGHT = getHeight();
         backButton.setVisible(true);
@@ -119,15 +130,18 @@ public class GameView extends JPanel implements Runnable
         add(pauseButton);
        
         BufferedImageLoader loader = new BufferedImageLoader();
-        level = loader.loadImage("/Untitled.png");
         background = loader.loadImage("/GrassBackground.png");
         
         //trying
         AI = new Player(new Nation(NationType.Cult),true);
         player = new Player(new Nation(NationType.Doth), false);
         
-        Map map = new Map(1, this, handler,listB,player,  AI);
+       
+        ResetAllLists();
         
+        revalidate();
+        repaint();
+        Map map = new Map(levelNo++,this, handler,listB,player,  AI);
         
     }
     @Override
@@ -150,13 +164,15 @@ public class GameView extends JPanel implements Runnable
         {
             long now = System.nanoTime();
             
+            
             for (Building listB1 : listB) {
                 if (listB1.isClicked()) {
                     if (clickCount<2) {
                         actionBuildings.add(listB1);
                         clickCount++;
                         listB1.setClicked(false);
-                        actionBuildings.get(actionBuildings.size()-1).addBorder();
+                        listB1.addBorder();
+                        System.out.println("Click girdi");
                     }
                 }
                 if(clickCount==2)
@@ -187,26 +203,10 @@ public class GameView extends JPanel implements Runnable
             }
             //5 sec loop
             long del =(now - llTime);
-            if(del >=5*ns*50)
-            {
-                boolean gameOver=true;
-                Player possessor = listB.get(0).getPossessor();
-                for( Building b :listB){
-                gameOver = (possessor == b.getPossessor()) && gameOver;
-                b.increaseArmySize();
-                System.out.println("Type: "+ b.getBuildingType()+ " Size: " + b.getArmy().getArmySize());
-                }
-                llTime = now;
-                
-                if(gameOver){
-                    System.out.println( possessor.toString()+"won");
-                    break;
-                    //put Gameover window here!!
-                }
-            }
+            
             //1 sec loop
             long secDel = (now - secTime);
-            if(secDel >=ns*50)
+            if(secDel >=ns*5)
             {
                 //movement of armies
                 for(int i=0;i<movingArmies.size();i++)
@@ -249,6 +249,25 @@ public class GameView extends JPanel implements Runnable
                     updates = 0;
             }
             
+            if(del >=5*ns*50)
+            {
+                boolean gameOver=true;
+                Player possessor = listB.get(0).getPossessor();
+                for( Building b :listB){
+                gameOver = (possessor == b.getPossessor()) && gameOver;
+                b.increaseArmySize();
+                System.out.println("Type: "+ b.getBuildingType()+ " Size: " + b.getArmy().getArmySize());
+                }
+                llTime = now;
+                
+                if(gameOver){
+                    System.out.println( possessor.toString()+"won");
+                    removeAll();
+                    gameOver=false;
+                    run();
+                 
+                }
+            }
             
         }
     }
@@ -336,6 +355,16 @@ public class GameView extends JPanel implements Runnable
     */
     public Handler getHandler() {
         return handler;
+    }
+
+    private void ResetAllLists() {
+        handler = new Handler();
+        actionBuildings = new ArrayList<Building>();
+        listB = new ArrayList<Building>();
+        list = new ArrayList<Army>();
+        movingArmies = new ArrayList<Army>();
+        movingLabels = new ArrayList<JLabel>();
+        clickCount=0;
     }
     
 }

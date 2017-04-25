@@ -57,11 +57,12 @@ public class Building extends GameObject implements MouseListener{
 			public void mousePressed(MouseEvent me){
                             if(clicked==false){
                                 clicked = true;
+                                System.out.println(clicked);
                             }
                             else{
                                 clicked = false;
+                                System.out.println("Else girdi");
                             }
-                            
 			}
 		});
         buildingChecker();
@@ -77,7 +78,8 @@ public class Building extends GameObject implements MouseListener{
     {
         
         army.setSize(army.getArmySize()+army.getProductionRate());
-        
+        setText(String.valueOf(army.getArmySize()));
+        setForeground (Color.yellow);
     }
     public Army moveToBase(Building building){
         Army army2= army.copy();//moving army
@@ -230,8 +232,8 @@ public class Building extends GameObject implements MouseListener{
             if(incomingArmy.getArmySize()*incomingArmy.getDamage()>army.getArmySize()*army.getDamage())
             {
                 possessor = incomingArmy.getPlayer();
-                army.setSize ((int)(((incomingArmy.getArmySize()*incomingArmy.getDamage()-army.getArmySize()*army.getDamage()))/(incomingArmy.getDamage())));
-                army.setPlayer(possessor);
+                incomingArmy.setSize ((int)(((incomingArmy.getArmySize()*incomingArmy.getDamage()-army.getArmySize()*army.getDamage()))/(incomingArmy.getDamage())));
+                this.setArmy(incomingArmy);
                 
                 //The building image should change here
                 if(possessor.toString().equalsIgnoreCase("player"))
