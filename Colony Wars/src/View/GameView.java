@@ -31,8 +31,8 @@ import javax.swing.JPanel;
 import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 /**
- *
- * @author Emre
+ * bu bir kalkismadir
+ * @author Emre & Taha 
  */
 public class GameView extends JPanel implements Runnable 
 {
