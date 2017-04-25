@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,6 +19,7 @@ import javax.imageio.ImageIO;
 public class BufferedImageLoader
 {
     private BufferedImage image;
+    private ImageIcon icon;
     
     public BufferedImage loadImage(String path)
     {

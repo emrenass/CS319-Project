@@ -5,6 +5,9 @@
  */
 package View;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 /**
  *
  * @author emre
@@ -14,8 +17,12 @@ public class PauseMenu extends javax.swing.JPanel {
     /**
      * Creates new form PauseMenu
      */
-    public PauseMenu() {
+    JFrame frame;
+    GameView game;
+    public PauseMenu(JFrame frame, GameView game) {
         initComponents();
+        this.frame = frame;
+        this.game = game;
     }
 
     /**
@@ -89,11 +96,15 @@ public class PauseMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_soundSettingsButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        // TODO add your handling code here:
+        frame.setContentPane(game.getContainer());
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void resumeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resumeButtonActionPerformed
-        // TODO add your handling code here:
+        game.remove(this);
+        game.validate();
+        game.repaint();
+        game.getThread().resume();
+        game.getPauseButton().setVisible(true);
     }//GEN-LAST:event_resumeButtonActionPerformed
 
 

@@ -22,6 +22,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -35,13 +37,16 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
 public class GameView extends JPanel implements Runnable 
 {
 
-    private JButton backButton = new JButton("Exit");
-    private JButton pauseButton = new JButton("Pause");
+   
+    private JButton pauseButton = new JButton();
+
+    
     private boolean paused = false;
     private JFrame frame;
-    private Container panel;
+    private Container container;
     private boolean running = false;
     private Thread thread;
+
     private BufferedImage level = null;
     private BufferedImage background = null;
     Handler handler = new Handler();
@@ -57,7 +62,7 @@ public class GameView extends JPanel implements Runnable
     ArrayList<JLabel> movingLabels = new ArrayList<JLabel>();
     Player player;
     Player AI;
-    PauseMenu pause = new PauseMenu();
+    PauseMenu pause;
     
     
     public static int WIDTH, HEIGHT;
@@ -69,6 +74,8 @@ public class GameView extends JPanel implements Runnable
     public GameView(int levelNo){
         this.levelNo=levelNo;
     }
+    
+    
     public synchronized void Start()
     {
         if(running)
@@ -79,61 +86,38 @@ public class GameView extends JPanel implements Runnable
         thread.start();
     }
     
-    public void copyFrameMain(JFrame frame){
-        this.frame = frame;
-    }
     
-    public void copyContentPaneMain(Container panel){
-        this.panel = panel;
-    }
     
     public void init()
     {
         removeAll();
         setLayout(null);
+        pause = new PauseMenu(frame, this);
         pause.setBounds(300, 100, 200, 400);
         
         WIDTH = getWidth();
         HEIGHT = getHeight();
-        backButton.setVisible(true);
-        backButton.setBounds(10, 10, 64, 32);
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.setContentPane(panel);
-                frame.setVisible(true);
-                thread.stop();
-            }
-        });
-        add(backButton);
-        pauseButton.setVisible(true);
-        pauseButton.setBounds(80, 10, 84, 32);
+        
+        
+        pauseButton.setBounds(10, 10, 32, 32);
+        
+        try{
+        pauseButton.setIcon(new ImageIcon(getClass().getResource("/pauseButtonIcon.png")));
+        pauseButton.setContentAreaFilled(false);
+        }catch(Exception e) {
+            Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, e);
+            pauseButton.setBounds(10, 10, 84, 32);
+            pauseButton.setText("Pause");
+        }
+        pauseButton.setMargin(new Insets(0, 0, 0, 0));
         pauseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!paused)
-                {
                     add(pause);
                     validate();
                     repaint();
                     thread.suspend();
-                    paused=true;
-                    pauseButton.setText("Resume");
-                    
-                }
-                else
-                {
-                    remove(pause);
-                    validate();
-                    repaint();
-                    thread.resume();
-                    paused=false;
-                    pauseButton.setText("Pause");
-                }
-            }
-
-            private void setColor(Color color) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    pauseButton.setVisible(false);
             }
         });
         add(pauseButton);
@@ -381,5 +365,27 @@ public class GameView extends JPanel implements Runnable
         movingLabels = new ArrayList<JLabel>();
         clickCount=0;
     }
+    
+    
+    public void copyFrameMain(JFrame frame){
+        this.frame = frame;
+    }
+    
+    public void copyContentPaneMain(Container container){
+        this.container = container;
+    }
+    
+    public Thread getThread() {
+        return thread;
+    }
+    
+    public JButton getPauseButton() {
+        return pauseButton;
+    }
+    
+    public Container getContainer() {
+        return container;
+    }
+    
     
 }
