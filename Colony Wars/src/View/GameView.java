@@ -168,8 +168,18 @@ public class GameView extends JPanel implements Runnable
             for (Building listB1 : listB) {
                 if (listB1.isClicked()) {
                     if (clickCount<2) {
-                        actionBuildings.add(listB1);
+                        /*if(clickCount == 0 && listB1.getPossessor().isIsAI()){
+                            break;
+                        }*/
                         clickCount++;
+                        if(clickCount == 1 && listB1.getPossessor().isIsAI()){
+                            clickCount = 0;
+                            listB1.setClicked(false);
+                            break;
+                    }
+                        actionBuildings.add(listB1);
+                        
+                        
                         listB1.setClicked(false);
                         listB1.addBorder();
                         System.out.println("Click girdi");
