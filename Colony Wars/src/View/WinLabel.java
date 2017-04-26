@@ -29,7 +29,7 @@ public class WinLabel extends JLabel {
     
     public WinLabel(){
         super();
-        loadImage();
+        loadWinImage();
         
     }
     
@@ -37,9 +37,10 @@ public class WinLabel extends JLabel {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         g.drawImage(image, 0, 0,width, height, null);
+        g.dispose();
     }
     
-    public void loadImage(){
+    public void loadWinImage(){
         image = loader.loadImage("/youwin.png");
     }
     

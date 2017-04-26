@@ -5,6 +5,8 @@
  */
 package View;
 
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsEnvironment;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -19,7 +21,7 @@ import javax.swing.ImageIcon;
 public class BufferedImageLoader
 {
     private BufferedImage image;
-    private ImageIcon icon;
+    
     
     public BufferedImage loadImage(String path)
     {
@@ -31,9 +33,5 @@ public class BufferedImageLoader
             Logger.getLogger(BufferedImageLoader.class.getName()).log(Level.SEVERE, null, ex);
         }
         return image;
-    }
-
-    public void loadImage(BufferedImage location) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
