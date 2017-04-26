@@ -297,7 +297,7 @@ public class GameView extends JPanel implements Runnable
                         ObjectInputStream ois = new ObjectInputStream(fis);
                         SavedData result = (SavedData) ois.readObject();
                         ois.close();
-                        result.setCurrentLevel(result.getCurrentLevel()+1);
+                        result.setCurrentLevel(levelNo+1);
                         FileOutputStream fos = new FileOutputStream("Save.cw");
                         ObjectOutputStream oos = new ObjectOutputStream(fos);
                         oos.writeObject(result);
