@@ -5,7 +5,14 @@
  */
 package View;
 
+import Model.SavedData;
 import java.awt.Dimension;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
@@ -18,6 +25,7 @@ public class GraphicManager extends javax.swing.JFrame {
     /**
      * Creates new form GraphicManager
      */
+    SavedData save;
     public GraphicManager() {
         
         initComponents();
@@ -145,6 +153,16 @@ public class GraphicManager extends javax.swing.JFrame {
     }//GEN-LAST:event_loadGameButtonActionPerformed
 
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
+        save = new SavedData(1);
+        try{
+        FileOutputStream fos = new FileOutputStream("Save.cw");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(save);
+        oos.close();
+        }
+        catch (IOException ex) {
+            Logger.getLogger(GraphicManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
         GameView game = new GameView();
         game.copyFrameMain(this);
         game.copyContentPaneMain(getContentPane());

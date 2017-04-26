@@ -14,11 +14,16 @@ import Controller.Nation;
 import Controller.NationType;
 import Controller.ObjectId;
 import Controller.Player;
+import Model.SavedData;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -282,6 +287,27 @@ public class GameView extends JPanel implements Runnable
                         }
                     }
                     System.out.println( possessor.toString()+"won");
+                    
+                    /*
+                    This part should change when we add AI
+                    */
+                    try{
+                        
+                        FileInputStream fis = new FileInputStream("Save.cw");
+                        ObjectInputStream ois = new ObjectInputStream(fis);
+                        SavedData result = (SavedData) ois.readObject();
+                        ois.close();
+                        result.setCurrentLevel(result.getCurrentLevel()+1);
+                        FileOutputStream fos = new FileOutputStream("Save.cw");
+                        ObjectOutputStream oos = new ObjectOutputStream(fos);
+                        oos.writeObject(result);
+                        oos.close();
+                    }
+                    catch (IOException ex) {
+                        Logger.getLogger(GraphicManager.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     removeAll();
                     gameOver=false;
                     run();

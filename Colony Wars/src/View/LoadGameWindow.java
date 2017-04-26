@@ -5,7 +5,14 @@
  */
 package View;
 
+import Model.SavedData;
 import java.awt.Container;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -20,9 +27,24 @@ public class LoadGameWindow extends javax.swing.JPanel {
     
     JFrame frame;
     Container panel;
-    
+    int level = 0;
     public LoadGameWindow() {
         initComponents();
+        FileInputStream fis;
+        try {
+            fis = new FileInputStream("Save.cw");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            SavedData result = (SavedData) ois.readObject();
+            ois.close();
+            level = result.getCurrentLevel();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(LoadGameWindow.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(LoadGameWindow.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoadGameWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     public void copyFrameMain(JFrame frame){
@@ -172,49 +194,58 @@ public class LoadGameWindow extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonMousePressed
 
     private void mapLocationLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel1MouseClicked
-        
-        GameView gw = new GameView(mapLocationLabel1.getLevelNumber());
-        gw.copyFrameMain(frame);
-        gw.copyContentPaneMain(panel);
-        gw.Start();
-        frame.setContentPane(gw);
-        frame.setVisible(true);
+        if(level>= 1){
+            GameView gw = new GameView(mapLocationLabel1.getLevelNumber());
+            gw.copyFrameMain(frame);
+            gw.copyContentPaneMain(panel);
+            gw.Start();
+            frame.setContentPane(gw);
+            frame.setVisible(true);
+        }
     }//GEN-LAST:event_mapLocationLabel1MouseClicked
 
     private void mapLocationLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel2MouseClicked
-        GameView gw = new GameView(mapLocationLabel2.getLevelNumber());
-        gw.copyFrameMain(frame);
-        gw.copyContentPaneMain(panel);
-        gw.Start();
-        frame.setContentPane(gw);
-        frame.setVisible(true);
+        if(level>= 2){
+            GameView gw = new GameView(mapLocationLabel2.getLevelNumber());
+            gw.copyFrameMain(frame);
+            gw.copyContentPaneMain(panel);
+            gw.Start();
+            frame.setContentPane(gw);
+            frame.setVisible(true);
+        }
     }//GEN-LAST:event_mapLocationLabel2MouseClicked
 
     private void mapLocationLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel3MouseClicked
-        GameView gw = new GameView(mapLocationLabel3.getLevelNumber());
-        gw.copyFrameMain(frame);
-        gw.copyContentPaneMain(panel);
-        gw.Start();
-        frame.setContentPane(gw);
-        frame.setVisible(true);
+        if(level>= 3){
+            GameView gw = new GameView(mapLocationLabel3.getLevelNumber());
+            gw.copyFrameMain(frame);
+            gw.copyContentPaneMain(panel);
+            gw.Start();
+            frame.setContentPane(gw);
+            frame.setVisible(true);
+        }
     }//GEN-LAST:event_mapLocationLabel3MouseClicked
 
     private void mapLocationLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel4MouseClicked
-        GameView gw = new GameView(mapLocationLabel4.getLevelNumber());
-        gw.copyFrameMain(frame);
-        gw.copyContentPaneMain(panel);
-        gw.Start();
-        frame.setContentPane(gw);
-        frame.setVisible(true);
+        if(level>= 4){
+            GameView gw = new GameView(mapLocationLabel4.getLevelNumber());
+            gw.copyFrameMain(frame);
+            gw.copyContentPaneMain(panel);
+            gw.Start();
+            frame.setContentPane(gw);
+            frame.setVisible(true);
+        }
     }//GEN-LAST:event_mapLocationLabel4MouseClicked
 
     private void mapLocationLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel5MouseClicked
-        GameView gw = new GameView(mapLocationLabel5.getLevelNumber());
-        gw.copyFrameMain(frame);
-        gw.copyContentPaneMain(panel);
-        gw.Start();
-        frame.setContentPane(gw);
-        frame.setVisible(true);
+        if(level>= 5){
+            GameView gw = new GameView(mapLocationLabel5.getLevelNumber());
+            gw.copyFrameMain(frame);
+            gw.copyContentPaneMain(panel);
+            gw.Start();
+            frame.setContentPane(gw);
+            frame.setVisible(true);
+        }
     }//GEN-LAST:event_mapLocationLabel5MouseClicked
 
 
