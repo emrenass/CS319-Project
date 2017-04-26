@@ -177,11 +177,13 @@ public class GameView extends JPanel implements Runnable
                 }
                 if(clickCount==2)
                 {
-                    Army movingArmy = actionBuildings.get(0).moveToBase( actionBuildings.get(1));
-                    JLabel label =movingArmy;
-                    movingLabels.add(label);
-                    movingArmies.add(movingArmy);
-                    add(label);
+                    if(actionBuildings.get(0).getArmy().getArmySize()>0){
+                        Army movingArmy = actionBuildings.get(0).moveToBase( actionBuildings.get(1));
+                        JLabel label =movingArmy;
+                        movingLabels.add(label);
+                        movingArmies.add(movingArmy);
+                        add(label);
+                    }
                     actionBuildings.get(actionBuildings.size()-1).removeBorder();
                     actionBuildings.get(actionBuildings.size()-2).removeBorder();
                     actionBuildings.remove(0);
