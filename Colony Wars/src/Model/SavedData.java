@@ -17,7 +17,8 @@ public class SavedData implements Serializable {
         }
         
         public void setCurrentLevel(int curretLevel){
-            this.currentLevel = curretLevel;
+            if(currentLevel > this.currentLevel)
+                this.currentLevel = curretLevel;
         }
 
 }
