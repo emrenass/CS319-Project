@@ -7,6 +7,7 @@ package View;
 
 import Model.SavedData;
 import java.awt.Dimension;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -153,24 +155,43 @@ public class GraphicManager extends javax.swing.JFrame {
     }//GEN-LAST:event_loadGameButtonActionPerformed
 
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
-        save = new SavedData(1);
-        try{
-        FileOutputStream fos = new FileOutputStream("Save.cw");
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(save);
-        oos.close();
+        boolean enter = true;
+        File file = new File("Save.cw");
+        if(file.exists()){
+            final String message = 
+                "There is a saved game.\n"
+                + "You will lose your previous game.\n"
+                +"Do you want to continue?";
+            int reply = JOptionPane.showConfirmDialog(this, message,"Warning", JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE);
+            if(reply==JOptionPane.YES_OPTION)
+                System.out.println("Okay");
+            if(reply==JOptionPane.NO_OPTION)
+                enter = false;
+                
         }
-        catch (IOException ex) {
-            Logger.getLogger(GraphicManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        GameView game = new GameView();
-        game.copyFrameMain(this);
-        game.copyContentPaneMain(getContentPane());
-        game.Start();
-        setContentPane(game);
+        
+        if(enter)
+        {
+            try{
+                FileOutputStream fos = new FileOutputStream("Save.cw");
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                save = new SavedData(1);
+                oos.writeObject(save);
+                oos.close();
+            }
+            catch (IOException ex) {
+                Logger.getLogger(GraphicManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            GameView game = new GameView();
+            game.copyFrameMain(this);
+            game.copyContentPaneMain(getContentPane());
+            game.Start();
+            setContentPane(game);
 
-        this.invalidate();
-        this.validate();
+            this.invalidate();
+            this.validate();
+        }
     }//GEN-LAST:event_newGameButtonActionPerformed
 
     private void tutorialButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tutorialButton2ActionPerformed
