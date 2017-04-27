@@ -12,6 +12,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.Timer;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -25,11 +26,18 @@ public class WinLabel extends JLabel {
     int height= 269;
     int times = 0;
     Timer timer;
-    
+    JPanel game;
     
     public WinLabel(){
         super();
         loadWinImage();
+        
+    }
+    
+    public WinLabel(JPanel game){
+        super();
+        loadWinImage();
+        this.game = game;
         
     }
     
@@ -46,19 +54,21 @@ public class WinLabel extends JLabel {
     
     public void animateImageLogic(){
         times++;
-        if(times<=5){
+        int numberOfResize = 5;
+        if(times<=numberOfResize){
             width +=10;
             height +=10;
         }
-        if (times>5){
+        if (times>numberOfResize){
             width -=10;
             height -=10;
             
-            if(times==10){
+            if(times==numberOfResize*2){
                 times = 0;
             }
         }
         repaint();
+        game.repaint();
     }
     
     public void startAnimate(){

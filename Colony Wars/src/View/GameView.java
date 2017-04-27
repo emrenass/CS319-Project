@@ -271,7 +271,7 @@ public class GameView extends JPanel implements Runnable
                     long startWinTime = System.nanoTime();
                     long nowWinTime = System.nanoTime();
                     boolean started = false;
-                    winlabel = new WinLabel();
+                    winlabel = new WinLabel(this);
                     winlabel.setBounds(200, 120, winlabel.getWidth()+50, winlabel.getHeight()+50);
                     add(winlabel);
                     while(true){
