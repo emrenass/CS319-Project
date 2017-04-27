@@ -34,13 +34,6 @@ public class WinLabel extends JLabel {
         
     }
     
-    public WinLabel(JPanel game){
-        super();
-        loadWinImage();
-        this.game = game;
-        
-    }
-    
     
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -68,7 +61,6 @@ public class WinLabel extends JLabel {
             }
         }
         repaint();
-        game.repaint();
     }
     
     public void startAnimate(){
