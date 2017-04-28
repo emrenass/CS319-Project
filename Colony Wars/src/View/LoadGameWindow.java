@@ -52,7 +52,7 @@ public class LoadGameWindow extends javax.swing.JPanel {
         }
         for(int i = 0; i<locationList.size(); i++){
             if(locationList.get(i).getLevelNumber()<=result.getCurrentLevel()){
-                locationList.get(i).setIconPath(true);
+                locationList.get(i).setPlayable(true);
             }
             else {
                 break;

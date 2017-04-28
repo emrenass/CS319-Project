@@ -44,7 +44,7 @@ public class MapLocationLabel extends JLabel {
         
     }
     
-    public void setIconPath(boolean playable){
+    public void setPlayable(boolean playable){
         if(playable){
             this.location = loader.loadImage("/locationPlayable.png");
         }

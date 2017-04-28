@@ -55,7 +55,7 @@ public class GameView extends JPanel implements Runnable
     private BufferedImage background = null;
     Handler handler = new Handler();
     private int clickCount = 0;
-    private int levelNo=0;
+    private int levelNo=1;
     //trying
     JLabel label;
     ArrayList<Building> actionBuildings = new ArrayList<Building>();
@@ -143,7 +143,7 @@ public class GameView extends JPanel implements Runnable
         
         revalidate();
         repaint();
-        Map map = new Map(++levelNo,this, handler,listB,player,  AI);
+        Map map = new Map(levelNo++,this, handler,listB,player,  AI);
         
     }
     @Override
@@ -313,7 +313,7 @@ public class GameView extends JPanel implements Runnable
                 ObjectInputStream ois = new ObjectInputStream(fis);
                 SavedData result = (SavedData) ois.readObject();
                 ois.close();
-                result.setCurrentLevel(levelNo+1);
+                result.setCurrentLevel(levelNo);
                 FileOutputStream fos = new FileOutputStream("Save.cw");
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 oos.writeObject(result);
