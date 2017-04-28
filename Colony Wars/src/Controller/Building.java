@@ -24,6 +24,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
 /**
@@ -51,7 +52,8 @@ public class Building extends GameObject implements MouseListener{
         this.buildingType=buildingType;
         loadImage();
         setSize(32,32);
-        
+        setHorizontalAlignment(SwingConstants.CENTER);
+        setForeground(Color.yellow);
         addMouseListener(new MouseAdapter(){
                         @Override
 			public void mousePressed(MouseEvent me){
@@ -79,7 +81,6 @@ public class Building extends GameObject implements MouseListener{
         
         army.setSize(army.getArmySize()+army.getProductionRate());
         setText(String.valueOf(army.getArmySize()));
-        setForeground (Color.yellow);
     }
     public Army moveToBase(Building building){
         Army army2= army.copy();//moving army

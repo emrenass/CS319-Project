@@ -36,7 +36,7 @@ public class Army extends GameObject
     private BufferedImage armyImage;
     public Army(float x, float y, Handler handler, ObjectId id) {
         super (x, y, handler, id);
-        ImageIcon icon = new ImageIcon(getClass().getResource("/Adsiz.png"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Soldier.png"));
         setIcon(icon);
         
         setBounds((int)x, (int)y, width, height);

@@ -70,6 +70,9 @@ public class GameView extends JPanel implements Runnable
     WinLabel winlabel;
     
     
+    double amountOfTicks = 60.0;
+    double ns = 1000000000 / amountOfTicks;
+    
     public static int WIDTH, HEIGHT;
     
     public GameView(){
@@ -151,8 +154,7 @@ public class GameView extends JPanel implements Runnable
         long llTime = System.nanoTime();
         long runTime = System.nanoTime();
         long secTime = System.nanoTime();
-        double amountOfTicks = 60.0;
-        double ns = 1000000000 / amountOfTicks;
+        
         double delta = 0;
         long timer = System.currentTimeMillis();
         int updates = 0;
@@ -161,10 +163,50 @@ public class GameView extends JPanel implements Runnable
         
         while(running)
         {
-            long now = System.nanoTime();
+           long now = System.nanoTime();
+           update();
             
+            delta += (now - lastTime) / ns;
+            lastTime = now;
             
-            for (Building listB1 : listB) {
+            while(delta >= 1){
+                    tick();
+                    updates++;
+                    delta--;
+                     
+            }
+            //5 sec loop
+            long del =(now - llTime);
+            //1 sec loop
+            long secDel = (now - secTime);
+            if(secDel >=ns*5)
+            {
+                fixedUpdate();
+                secTime = now;
+                
+            }
+            
+            repaint();
+            frames++;
+            
+            if(System.currentTimeMillis() - timer > 1000){
+                    timer += 1000;
+                    //System.out.println("FPS: " + frames + " TICKS: " + updates);
+                    frames = 0;
+                    updates = 0;
+            }
+            
+            if(del >=5*ns*50)
+            {
+                llTime = now;
+                gameOver();
+            }
+            
+        }
+    }
+    
+    public void update(){
+        for (Building listB1 : listB) {
                 if (listB1.isClicked()) {
                     if (clickCount<2) {
                         
@@ -197,26 +239,11 @@ public class GameView extends JPanel implements Runnable
                 }
                 //System.out.println("clickCount: "+clickCount);
             }
-           
-            
-            delta += (now - lastTime) / ns;
-            lastTime = now;
-            
-            while(delta >= 1){
-                    tick();
-                    updates++;
-                    delta--;
-                     
-            }
-            //5 sec loop
-            long del =(now - llTime);
-            
-            //1 sec loop
-            long secDel = (now - secTime);
-            if(secDel >=ns*5)
-            {
-                //movement of armies
-                for(int i=0;i<movingArmies.size();i++)
+    }
+    
+    public void fixedUpdate()
+    {
+        for(int i=0;i<movingArmies.size();i++)
                 {
                     JLabel label = movingLabels.get(i);
                     Army army = movingArmies.get(i);
@@ -242,83 +269,67 @@ public class GameView extends JPanel implements Runnable
                     }
                     label.setLocation((int)army.getLocX(),(int)army.getLocY());
                     //label.setLocation(army.getSpeed()+label.getX(),army.getSpeed()+label.getY());
-                    secTime = now;
-               }
-            }
-            
-            repaint();
-            frames++;
-            
-            if(System.currentTimeMillis() - timer > 1000){
-                    timer += 1000;
-                    //System.out.println("FPS: " + frames + " TICKS: " + updates);
-                    frames = 0;
-                    updates = 0;
-            }
-            
-            if(del >=5*ns*50)
-            {
-                boolean gameOver=true;
-                Player possessor = listB.get(0).getPossessor();
-                for( Building b :listB){
-                gameOver = (possessor == b.getPossessor()) && gameOver;
-                b.increaseArmySize();
-                System.out.println("Type: "+ b.getBuildingType()+ " Size: " + b.getArmy().getArmySize());
-                }
-                llTime = now;
-                
-                if(gameOver){
-                    long startWinTime = System.nanoTime();
-                    long nowWinTime = System.nanoTime();
-                    boolean started = false;
-                    winlabel = new WinLabel(this);
-                    winlabel.setBounds(200, 120, winlabel.getWidth()+50, winlabel.getHeight()+50);
-                    add(winlabel);
-                    while(true){
-                        nowWinTime = System.nanoTime();
-                        if(!started && nowWinTime - startWinTime <=5*ns*50){
-                            winlabel.startAnimate();
-                            started = true;
-                        }
-                        else if(nowWinTime - startWinTime > 5*ns*50){
-                            winlabel.stopAnimate();
-                            started = false;
-                            break;
-                        }
-                    }
-                    System.out.println( possessor.toString()+"won");
                     
-                    /*
-                    This part should change when we add AI
-                    */
-                    try{
-                        
-                        FileInputStream fis = new FileInputStream("Save.cw");
-                        ObjectInputStream ois = new ObjectInputStream(fis);
-                        SavedData result = (SavedData) ois.readObject();
-                        ois.close();
-                        result.setCurrentLevel(levelNo+1);
-                        FileOutputStream fos = new FileOutputStream("Save.cw");
-                        ObjectOutputStream oos = new ObjectOutputStream(fos);
-                        oos.writeObject(result);
-                        oos.close();
-                    }
-                    catch (IOException ex) {
-                        Logger.getLogger(GraphicManager.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    removeAll();
-                    gameOver=false;
-                    run();
-                 
-                }
-            }
-            
-        }
+               }
     }
     
-    
+    public void gameOver(){
+        boolean gameOver=true;
+        Player possessor = listB.get(0).getPossessor();
+        for( Building b :listB){
+        gameOver = (possessor == b.getPossessor()) && gameOver;
+        b.increaseArmySize();
+        System.out.println("Type: "+ b.getBuildingType()+ " Size: " + b.getArmy().getArmySize());
+        }
+        
+
+        if(gameOver){
+            long startWinTime = System.nanoTime();
+            long nowWinTime = System.nanoTime();
+            boolean started = false;
+            winlabel = new WinLabel(this);
+            winlabel.setBounds(200, 120, winlabel.getWidth()+50, winlabel.getHeight()+50);
+            add(winlabel);
+            while(true){
+                nowWinTime = System.nanoTime();
+                if(!started && nowWinTime - startWinTime <=5*ns*50){
+                    winlabel.startAnimate();
+                    started = true;
+                }
+                else if(nowWinTime - startWinTime > 5*ns*50){
+                    winlabel.stopAnimate();
+                    started = false;
+                    break;
+                }
+            }
+            System.out.println( possessor.toString()+"won");
+
+            /*
+            This part should change when we add AI
+            */
+            try{
+
+                FileInputStream fis = new FileInputStream("Save.cw");
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                SavedData result = (SavedData) ois.readObject();
+                ois.close();
+                result.setCurrentLevel(levelNo+1);
+                FileOutputStream fos = new FileOutputStream("Save.cw");
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(result);
+                oos.close();
+            }
+            catch (IOException ex) {
+                Logger.getLogger(GraphicManager.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            removeAll();
+            gameOver=false;
+            run();
+
+        }
+    }
     
     private void tick()
     {
@@ -399,6 +410,7 @@ public class GameView extends JPanel implements Runnable
         }
     }
     */
+    
     public Handler getHandler() {
         return handler;
     }
