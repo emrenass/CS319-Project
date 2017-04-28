@@ -259,7 +259,7 @@ public static void main(String args[]) {
         frame.add(label1);
         frame.add(label2);
         frame.add(label3);
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(HIDE_ON_CLOSE);
         frame.show();
                 
                 /*JFrame frame = new JFrame();
