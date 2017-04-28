@@ -6,7 +6,9 @@
 package View;
 
 import Model.SavedData;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.LayoutManager;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,8 +17,10 @@ import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import org.netbeans.lib.awtextra.AbsoluteLayout;
 
 /**
  *
@@ -235,9 +239,28 @@ public static void main(String args[]) {
             java.util.logging.Logger.getLogger(GraphicManager.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
+        
         /* Create and display the form */
                 new GraphicManager().setVisible(true);
+                
+                JFrame frame = new JFrame();
+        JLabel label1 = new JLabel("!!! For AI Testing you will always lose I made enemyArsenal damage (*20) so change it before coding");
+        JLabel label2 = new JLabel("!!! Read the comment for decideAttack in player class for AI");
+        JLabel label3 = new JLabel("!!! AI cant send true number of soldier for an unkown reason");
+        label1.setForeground(Color.red);
+        label2.setForeground(Color.blue);
+        label3.setForeground(Color.magenta);
+        frame.setLayout(null);
+        frame.setSize(800, 600);
+        label1.setBounds(0,0,800, 300);
+        label2.setBounds(0,300,600, 150);
+        label3.setBounds(0,450,600, 150);
+        frame.add(label1);
+        frame.add(label2);
+        frame.add(label3);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.show();
                 
                 /*JFrame frame = new JFrame();
                 WinLabel lbl = new WinLabel();

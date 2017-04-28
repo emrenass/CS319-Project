@@ -140,7 +140,7 @@ public class Building extends GameObject implements MouseListener{
     public void increaseDamage(){
         if((buildingType.equalsIgnoreCase("playerArsenal")||buildingType.equalsIgnoreCase("enemyArsenal")) && !isIdle)
         {
-            army.setDamage(army.getDamage()+0.5);//0.5 DEFAULT VALUE DEGISTIR
+            army.setDamage(army.getDamage()*20);//0.5 DEFAULT VALUE DEGISTIR
         }
     }
     @Override
@@ -260,17 +260,24 @@ public class Building extends GameObject implements MouseListener{
                 this.setArmy(incomingArmy);
                 
                 //The building image should change here
-                if(possessor.toString().equalsIgnoreCase("player"))
+                if(possessor.toString().equalsIgnoreCase("player")) {
                     if(buildingType.contains("Arsenal")){
                         buildingType= "playerArsenal";
                         loadImage();
                     }
+                }
+                else if(possessor.toString().equalsIgnoreCase("AI")) {
+                    if(buildingType.contains("Hospital")){
+                        buildingType= "enemyHospital";
+                        loadImage();
+                }
                 
-            }
-            else
-            {
-                army.setSize ((int)((army.getArmySize()*army.getDamage()-incomingArmy.getArmySize()*incomingArmy.getDamage()) / army.getDamage()));
-                System.out.println(army.getArmySize());
+                }
+                else
+                {
+                    army.setSize ((int)((army.getArmySize()*army.getDamage()-incomingArmy.getArmySize()*incomingArmy.getDamage()) / army.getDamage()));
+                    System.out.println(army.getArmySize());
+                }
             }
         }
         //support
@@ -281,6 +288,4 @@ public class Building extends GameObject implements MouseListener{
             
     }
     
-    
-    
-}
+}  
