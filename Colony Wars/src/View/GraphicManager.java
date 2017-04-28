@@ -237,7 +237,6 @@ public static void main(String args[]) {
         //</editor-fold>
 
         /* Create and display the form */
-        
                 new GraphicManager().setVisible(true);
                 
                 /*JFrame frame = new JFrame();

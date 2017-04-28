@@ -5,15 +5,19 @@
  */
 package View;
 
+import Controller.MapLocationLabel;
 import Model.SavedData;
 import java.awt.Container;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  *
@@ -28,13 +32,15 @@ public class LoadGameWindow extends javax.swing.JPanel {
     JFrame frame;
     Container panel;
     int level = 0;
+    ArrayList<MapLocationLabel> locationList;
     public LoadGameWindow() {
         initComponents();
         FileInputStream fis;
+        SavedData result = null;
         try {
             fis = new FileInputStream("Save.cw");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            SavedData result = (SavedData) ois.readObject();
+            result = (SavedData) ois.readObject();
             ois.close();
             level = result.getCurrentLevel();
         } catch (FileNotFoundException ex) {
@@ -43,6 +49,14 @@ public class LoadGameWindow extends javax.swing.JPanel {
             Logger.getLogger(LoadGameWindow.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(LoadGameWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for(int i = 0; i<locationList.size(); i++){
+            if(locationList.get(i).getLevelNumber()<=result.getCurrentLevel()){
+                locationList.get(i).setIconPath(true);
+            }
+            else {
+                break;
+            }
         }
         
     }
@@ -135,6 +149,12 @@ public class LoadGameWindow extends javax.swing.JPanel {
                 mapLocationLabel5MouseClicked(evt);
             }
         });
+        locationList = new ArrayList<MapLocationLabel>();
+        locationList.add(mapLocationLabel1);
+        locationList.add(mapLocationLabel2);
+        locationList.add(mapLocationLabel3);
+        locationList.add(mapLocationLabel4);
+        locationList.add(mapLocationLabel5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

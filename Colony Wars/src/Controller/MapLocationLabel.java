@@ -44,6 +44,16 @@ public class MapLocationLabel extends JLabel {
         
     }
     
+    public void setIconPath(boolean playable){
+        if(playable){
+            this.location = loader.loadImage("/locationPlayable.png");
+        }
+        else {
+            this.location = loader.loadImage("/location.png");
+        }
+        repaint();
+    }
+    
     public MapLocationLabel(int levelNumber)
     {
         this.levelNumber = levelNumber;

@@ -55,7 +55,7 @@ public class GameView extends JPanel implements Runnable
     private BufferedImage background = null;
     Handler handler = new Handler();
     private int clickCount = 0;
-    private int levelNo=1;
+    private int levelNo=0;
     //trying
     JLabel label;
     ArrayList<Building> actionBuildings = new ArrayList<Building>();
@@ -143,7 +143,7 @@ public class GameView extends JPanel implements Runnable
         
         revalidate();
         repaint();
-        Map map = new Map(levelNo++,this, handler,listB,player,  AI);
+        Map map = new Map(++levelNo,this, handler,listB,player,  AI);
         
     }
     @Override
