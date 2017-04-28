@@ -21,7 +21,7 @@ public class Nation {
         {
             setUnitSpeed(30);
             setUnitDamage(1.5);
-            setUnitProductionRate(20);
+            setUnitProductionRate(40);
         }
         
         if(nation==NationType.Doth)

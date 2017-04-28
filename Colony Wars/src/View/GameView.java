@@ -211,7 +211,7 @@ public class GameView extends JPanel implements Runnable
                     if (clickCount<2) {
                         
                         clickCount++;
-                        if(clickCount == 1 && listB1.getPossessor().isIsAI()){
+                        if(clickCount == 1 && listB1.getPossessor().isAI()){
                             clickCount = 0;
                             listB1.setClicked(false);
                             break;
@@ -239,6 +239,15 @@ public class GameView extends JPanel implements Runnable
                 }
                 //System.out.println("clickCount: "+clickCount);
             }
+        
+       Building decided = AI.decideAttack(listB);
+       if(decided != null) {
+            Army movingArmy = decided.moveToBaseAI(decided.getArmy().getTargetBuilding());
+            JLabel label =movingArmy;
+            movingLabels.add(label);
+            movingArmies.add(movingArmy);
+            add(label);
+       }
     }
     
     public void fixedUpdate()

@@ -96,6 +96,24 @@ public class Building extends GameObject implements MouseListener{
         army2.setTargetBuilding(building);
         return army2;
     }
+    
+    public Army moveToBaseAI(Building building){
+        Army army2= army.copy();//moving army
+        army.setSize(army.getArmySize()/2);
+        army2.setSize(army2.getArmySize()/2);
+        
+        ArrayList<Army> temp = possessor.getList();
+        temp.add(army2);
+        possessor.setList(temp);
+        
+        //both armies have the same id!!!
+        System.out.println("Source: "+ this.buildingType+ "Target: "+ building.getBuildingType());
+        army2.setTargetBuilding(building);
+        return army2;
+    }
+    
+    
+
     public void buildingChecker()
     {
         this.increaseDamage();
@@ -111,7 +129,12 @@ public class Building extends GameObject implements MouseListener{
     public void increaseProduction(){
         if((buildingType.equalsIgnoreCase("playerHospital")||buildingType.equalsIgnoreCase("enemyHospital")) && !isIdle)
         {
-            army.setProductionRate(army.getProductionRate()+10000);//10 DEFAULT VALUE DEGISTIR
+            army.setProductionRate(army.getProductionRate()+10);//10 DEFAULT VALUE DEGISTIR
+        }
+        
+        if((buildingType.equalsIgnoreCase("playerArsenal")||buildingType.equalsIgnoreCase("enemyArsenal")) && !isIdle)
+        {
+            army.setProductionRate(army.getProductionRate()+10);//10 DEFAULT VALUE DEGISTIR
         }
     }
     public void increaseDamage(){

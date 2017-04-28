@@ -30,6 +30,32 @@ public class Player {
         }
     }
     
+    public Building decideAttack(ArrayList<Building> build){
+        ArrayList<Building> aiBase = new ArrayList<Building>();
+        ArrayList<Building> playerBase = new ArrayList<Building>();
+        for(Building builds : build) {
+            if(builds.getPossessor().isAI()){
+                aiBase.add(builds);
+            }
+            else {
+                playerBase.add(builds);
+            }
+                
+        }
+        Building returnBuild = null;
+            for(Building aiBuild : aiBase)
+                for(Building posBuild : playerBase){
+                    if(aiBuild.getArmy().getArmySize()*aiBuild.getPossessor().getNation().getUnitDamage() > 
+                            posBuild.getArmy().getArmySize()*posBuild.getPossessor().getNation().getUnitDamage()) {
+                        aiBuild.moveToBaseAI(posBuild);
+                        aiBuild.getArmy().setTargetBuilding(posBuild);
+                        returnBuild = aiBuild;
+                    }
+                        
+        }
+            return returnBuild;
+    }
+    
     public Nation getNation() {
         return nation;
     }
@@ -46,7 +72,7 @@ public class Player {
         this.list = list;
     }
 
-    public boolean isIsAI() {
+    public boolean isAI() {
         return isAI;
     }
     
