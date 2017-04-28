@@ -30,6 +30,15 @@ public class Player {
         }
     }
     
+    /*
+    decideAttack function called in the GameView class the code basically takes all the buildings in the map
+    split it into aiBase and playerBase(idle in the future). In the second loop it compare two arraylist
+    in order to find suitable base to attack and if it finds with the given function in the if statement it returns
+    that building. Also it sets it's base's army's targetbuilding to result. In the game view menu it's calling by the
+    same method we use for player's base.
+    
+    This function only for AI.
+    */
     public Building decideAttack(ArrayList<Building> build){
         ArrayList<Building> aiBase = new ArrayList<Building>();
         ArrayList<Building> playerBase = new ArrayList<Building>();

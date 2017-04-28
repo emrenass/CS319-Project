@@ -146,6 +146,12 @@ public class GameView extends JPanel implements Runnable
         Map map = new Map(levelNo++,this, handler,listB,player,  AI);
         
     }
+    
+    
+    /*
+    The run method has been cleared with created 3 methods which are (update: use it for non physical objects
+    fixedUpdate: for physical objects and gameOver: is the logic that execute for end of the game)
+    */
     @Override
     public void run() 
     {
@@ -240,6 +246,11 @@ public class GameView extends JPanel implements Runnable
                 //System.out.println("clickCount: "+clickCount);
             }
         
+        
+        
+        /*The method decideAttack called here if the decided is not null it use the same logic
+        to move it's armies same with player logic        
+        */
        Building decided = AI.decideAttack(listB);
        if(decided != null) {
             Army movingArmy = decided.moveToBaseAI(decided.getArmy().getTargetBuilding());
