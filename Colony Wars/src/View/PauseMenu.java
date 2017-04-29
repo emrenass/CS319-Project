@@ -19,10 +19,12 @@ public class PauseMenu extends javax.swing.JPanel {
      */
     JFrame frame;
     GameView game;
-    public PauseMenu(JFrame frame, GameView game) {
+    TimeLabel timeLabel;
+    public PauseMenu(JFrame frame, GameView game, TimeLabel timeLabel) {
         initComponents();
         this.frame = frame;
         this.game = game;
+        this.timeLabel = timeLabel;
     }
 
     /**
@@ -105,6 +107,8 @@ public class PauseMenu extends javax.swing.JPanel {
         game.repaint();
         game.getThread().resume();
         game.getPauseButton().setVisible(true);
+        timeLabel.startTime();
+        timeLabel.setStoped(false);
     }//GEN-LAST:event_resumeButtonActionPerformed
 
 

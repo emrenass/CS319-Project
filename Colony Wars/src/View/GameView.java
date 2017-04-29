@@ -68,7 +68,7 @@ public class GameView extends JPanel implements Runnable
     Player AI;
     PauseMenu pause;
     WinLabel winlabel;
-    
+    TimeLabel timeLabel;
     
     double amountOfTicks = 60.0;
     double ns = 1000000000 / amountOfTicks;
@@ -100,7 +100,10 @@ public class GameView extends JPanel implements Runnable
     {
         removeAll();
         setLayout(null);
-        pause = new PauseMenu(frame, this);
+        timeLabel = new TimeLabel();
+        timeLabel.setBounds(730,10,50,20);
+        add(timeLabel);
+        pause = new PauseMenu(frame, this, timeLabel);
         pause.setBounds(300, 100, 200, 400);
         
         WIDTH = getWidth();
@@ -122,6 +125,8 @@ public class GameView extends JPanel implements Runnable
         pauseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                    timeLabel.stopTime();
+                    timeLabel.setStoped(true);
                     add(pause);
                     validate();
                     repaint();

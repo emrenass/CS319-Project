@@ -259,6 +259,9 @@ public static void main(String args[]) {
         frame.add(label1);
         frame.add(label2);
         frame.add(label3);
+        TimeLabel timelbl = new TimeLabel();
+        timelbl.setBounds(600,10,200,50);
+        frame.add(timelbl);
         frame.setDefaultCloseOperation(HIDE_ON_CLOSE);
         frame.show();
                 

@@ -26,7 +26,7 @@ public class WinLabel extends JLabel {
     int height= 269;
     int times = 0;
     Timer timer;
-    JPanel game;
+    GameView game;
     
     public WinLabel(){
         super();
@@ -34,7 +34,7 @@ public class WinLabel extends JLabel {
         
     }
     
-    public WinLabel(JPanel game){
+    public WinLabel(GameView game){
         super();
         loadWinImage();
         this.game = game;
