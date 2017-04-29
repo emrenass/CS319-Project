@@ -246,8 +246,6 @@ public class GameView extends JPanel implements Runnable
                 //System.out.println("clickCount: "+clickCount);
             }
         
-        
-        
         /*The method decideAttack called here if the decided is not null it use the same logic
         to move it's armies same with player logic        
         */
@@ -265,6 +263,7 @@ public class GameView extends JPanel implements Runnable
     
     public void fixedUpdate()
     {
+        
         for(int i=0;i<movingArmies.size();i++)
                 {
                     JLabel label = movingLabels.get(i);
@@ -296,11 +295,16 @@ public class GameView extends JPanel implements Runnable
     }
     
     public void gameOver(){
+        //This function will change place
+        for(Building builds : listB) {
+            builds.increaseArmySize();
+        }
+        /////////////////////////////
+        
         boolean gameOver=true;
         Player possessor = listB.get(0).getPossessor();
         for( Building b :listB){
         gameOver = (possessor == b.getPossessor()) && gameOver;
-        b.increaseArmySize();
         System.out.println("Type: "+ b.getBuildingType()+ " Size: " + b.getArmy().getArmySize());
         }
         
