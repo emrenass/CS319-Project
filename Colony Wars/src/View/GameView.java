@@ -251,13 +251,15 @@ public class GameView extends JPanel implements Runnable
         /*The method decideAttack called here if the decided is not null it use the same logic
         to move it's armies same with player logic        
         */
-       Building decided = AI.decideAttack(listB);
-       if(decided != null) {
-            Army movingArmy = decided.moveToBaseAI(decided.getArmy().getTargetBuilding());
+       ArrayList<Building> decided = AI.decideAttack(listB);
+       if(decided.size() > 0) {
+           for(Building decidedBuilding : decided) {
+            Army movingArmy = decidedBuilding.moveToBaseAI(decidedBuilding.getArmy().getTargetBuilding());
             JLabel label =movingArmy;
             movingLabels.add(label);
             movingArmies.add(movingArmy);
             add(label);
+           }
        }
     }
     

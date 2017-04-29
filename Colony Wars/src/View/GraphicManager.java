@@ -253,9 +253,9 @@ public static void main(String args[]) {
         label3.setForeground(Color.magenta);
         frame.setLayout(null);
         frame.setSize(800, 600);
-        label1.setBounds(0,0,800, 300);
-        label2.setBounds(0,300,600, 150);
-        label3.setBounds(0,450,600, 150);
+        label1.setBounds(0,0,800, 50);
+        label2.setBounds(0,100,800, 50);
+        label3.setBounds(0,200,800, 50);
         frame.add(label1);
         frame.add(label2);
         frame.add(label3);
