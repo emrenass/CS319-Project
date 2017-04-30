@@ -131,16 +131,11 @@ public class Building extends GameObject implements MouseListener{
         {
             army.setProductionRate(army.getProductionRate()+10);//10 DEFAULT VALUE DEGISTIR
         }
-        
-        if((buildingType.equalsIgnoreCase("playerArsenal")||buildingType.equalsIgnoreCase("enemyArsenal")) && !isIdle)
-        {
-            army.setProductionRate(army.getProductionRate()+10);//10 DEFAULT VALUE DEGISTIR
-        }
     }
     public void increaseDamage(){
         if((buildingType.equalsIgnoreCase("playerArsenal")||buildingType.equalsIgnoreCase("enemyArsenal")) && !isIdle)
         {
-            army.setDamage(army.getDamage()*20);//0.5 DEFAULT VALUE DEGISTIR
+            army.setDamage(army.getDamage()+0.5);//0.5 DEFAULT VALUE DEGISTIR
         }
     }
     @Override
@@ -261,23 +256,32 @@ public class Building extends GameObject implements MouseListener{
                 
                 //The building image should change here
                 if(possessor.toString().equalsIgnoreCase("player")) {
-                    if(buildingType.contains("Arsenal")){
+                    /**if(buildingType.contains("Arsenal")){
                         buildingType= "playerArsenal";
+                        * */
+                        buildingType=buildingType.replaceAll("enemy", "player");
+                                
                         loadImage();
-                    }
+                        
+                    //}   
+                    
                 }
-                else if(possessor.toString().equalsIgnoreCase("AI")) {
-                    if(buildingType.contains("Hospital")){
+                else //(possessor.toString().equalsIgnoreCase("AI")) {
+                {
+                    /**if(buildingType.contains("Hospital")){
                         buildingType= "enemyHospital";
                         loadImage();
                 }
-                
+                */
+                    System.out.println("The image will change now!");
+                    buildingType = buildingType.replaceAll("player", "enemy");
+                    loadImage();
                 }
-                else
-                {
-                    army.setSize ((int)((army.getArmySize()*army.getDamage()-incomingArmy.getArmySize()*incomingArmy.getDamage()) / army.getDamage()));
-                    System.out.println(army.getArmySize());
-                }
+            }
+            else
+            {
+                army.setSize ((int)((army.getArmySize()*army.getDamage()-incomingArmy.getArmySize()*incomingArmy.getDamage()) / army.getDamage()));
+                System.out.println(army.getArmySize());
             }
         }
         //support

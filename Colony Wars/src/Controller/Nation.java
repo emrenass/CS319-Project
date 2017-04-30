@@ -12,30 +12,30 @@ package Controller;
 public class Nation {
     private int unitSpeed,unitProductionRate;
     private double unitDamage;
-    protected NationType nation;
+    protected NationType nationType;
 
-    public Nation(NationType nation) {
-        this.nation=nation;
+    public Nation(NationType nationType) {
+        this.nationType=nationType;
         
-        if(nation==NationType.Cult)
+        if(nationType==NationType.Cult)
         {
             setUnitSpeed(30);
             setUnitDamage(1.5);
-            setUnitProductionRate(40);
+            setUnitProductionRate(30);
         }
         
-        if(nation==NationType.Doth)
+        if(nationType==NationType.Doth)
         {
             setUnitSpeed(20);
             setUnitDamage(1.5);
-            setUnitProductionRate(30);
+            setUnitProductionRate(20);
         }
         
-        if(nation==NationType.Azad)
+        if(nationType==NationType.Azad)
         {
             setUnitSpeed(30);
             setUnitDamage(1);
-            setUnitProductionRate(30);
+            setUnitProductionRate(20);
         }
     }
 
@@ -64,11 +64,11 @@ public class Nation {
     }
 
     public NationType getNation() {
-        return nation;
+        return nationType;
     }
 
     public void setNation(NationType nation) {
-        this.nation = nation;
+        this.nationType = nation;
     }
     
     

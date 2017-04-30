@@ -251,9 +251,10 @@ public class GameView extends JPanel implements Runnable
                 //System.out.println("clickCount: "+clickCount);
             }
         
-        /*The method decideAttack called here if the decided is not null it use the same logic
+        /*The method decideAttack called here if the decided is not null it uses the same logic
         to move it's armies same with player logic        
         */
+        
        ArrayList<Building> decided = AI.decideAttack(listB);
        if(decided.size() > 0) {
            for(Building decidedBuilding : decided) {
@@ -264,6 +265,7 @@ public class GameView extends JPanel implements Runnable
             add(label);
            }
        }
+       
     }
     
     public void fixedUpdate()

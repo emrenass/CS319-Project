@@ -54,9 +54,9 @@ public class Player {
         ArrayList<Building> returnBuild = new ArrayList<Building>();
             for(Building aiBuild : aiBase)
                 for(Building posBuild : playerBase){
-                    if(aiBuild.getArmy().getArmySize()*aiBuild.getPossessor().getNation().getUnitDamage() > 
-                            posBuild.getArmy().getArmySize()*posBuild.getPossessor().getNation().getUnitDamage()) {
-                        aiBuild.moveToBaseAI(posBuild);
+                    if(aiBuild.getArmy().getArmySize()*aiBuild.getPossessor().getNation().getUnitDamage() > //nationın damage'i yerine direk building in armysinin damagina bakmak daha iyi olabilir
+                            posBuild.getArmy().getArmySize()*posBuild.getPossessor().getNation().getUnitDamage()) {//çünkü bina arsenalse damageları normalden yüksek
+                        //aiBuild.moveToBaseAI(posBuild);
                         aiBuild.getArmy().setTargetBuilding(posBuild);
                         returnBuild.add(aiBuild);
                     }
