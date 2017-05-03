@@ -88,6 +88,7 @@ public class GameView extends JPanel implements Runnable
         this.gameMode = gameMode;
         this .difficultyLevel=difficultyLevel;
         this.playerNation = playerNation;
+        System.out.println(""+this.difficultyLevel + this.playerNation);
     }
     public GameView(String gameMode, int difficultyLevel, NationType playerNation){
         this.gameMode = gameMode;

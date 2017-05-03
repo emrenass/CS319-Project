@@ -89,7 +89,7 @@ public class Player {
                             //aiBuild.moveToBaseAI(posBuild);
                             aiBuild.getArmy().setTargetBuilding(posBuild);
                             returnBuild.add(aiBuild);
-                            return returnBuild;
+                            
                         }
 
             }
