@@ -15,6 +15,7 @@ public class SoundManager implements Runnable
     private boolean running = false;
     private Thread thread;
     public boolean playSong = false;
+    private long clipTime;
     
     public SoundManager()
     {
@@ -33,6 +34,7 @@ public class SoundManager implements Runnable
         if(running)
             return;
         
+        playSong = true;
         running = true;
         thread = new Thread(this);
         thread.start();
@@ -64,12 +66,16 @@ public class SoundManager implements Runnable
 
     public void Pause()
     {
-        if(this.clip != null)
-        {
-            clip.stop();
-            clip.loop(-1);
-            clip.close();
-        }
+        playSong = false;
+        clipTime= clip.getMicrosecondPosition();
+        clip.stop();
+
+    }
+    
+    public void Resume()
+    {
+        playSong = true;
+        clip.start();
 
     }
     

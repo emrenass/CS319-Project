@@ -89,7 +89,16 @@ public class SoundSettingsWindow extends javax.swing.JPanel {
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void muteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_muteButtonActionPerformed
-        
+        if(GraphicManager.sm.isPlaySong())
+        {
+            muteButton.setText("Unmute");
+            GraphicManager.sm.Pause();
+        }
+        else
+        {
+            muteButton.setText("Mute");
+            GraphicManager.sm.Resume();
+        }
     }//GEN-LAST:event_muteButtonActionPerformed
 
     public void copyFrameMain(JFrame frame){
