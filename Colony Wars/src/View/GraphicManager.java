@@ -202,10 +202,12 @@ public class GraphicManager extends javax.swing.JFrame {
             this.validate();
         }*/
         
-        GameOptions go = new GameOptions();
-        go.copyFrameMain(this);
-        go.copyContentPaneMain(getContentPane());
-        setContentPane(go);
+        GameMode gMode = new GameMode();
+        gMode.copyFrameMain(this);
+        gMode.copyContentPaneMain(getContentPane());
+        setContentPane(gMode);
+        this.invalidate();
+        this.validate();
     }//GEN-LAST:event_newGameButtonActionPerformed
 
     private void tutorialButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tutorialButton2ActionPerformed
