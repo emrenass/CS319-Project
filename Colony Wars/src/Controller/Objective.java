@@ -43,7 +43,7 @@ public class Objective {
                 }
             }
             
-            if(AIArmySize>150){
+            if(AIArmySize>650){
                 objectiveAchieved=true;
                 winner = AI;
             }
@@ -53,6 +53,19 @@ public class Objective {
             }
         }
         
+        if(objectiveID==3){
+            objectiveAchieved=true;
+            Player possessor = listB.get(0).getPossessor();
+            for( Building b :listB){
+            objectiveAchieved = (possessor == b.getPossessor()) && objectiveAchieved;  
+            winner = possessor;
+            }
+        }    
+        if(objectiveID==4){
+        }    
+        
+         if(objectiveID==5){
+        }    
         return winner;
     }
     

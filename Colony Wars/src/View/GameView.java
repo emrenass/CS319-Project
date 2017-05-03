@@ -363,26 +363,30 @@ public class GameView extends JPanel implements Runnable
             /*
             This part should change when we add AI
             */
-            try{
-
-                FileInputStream fis = new FileInputStream("Save.cw");
-                ObjectInputStream ois = new ObjectInputStream(fis);
-                SavedData result = (SavedData) ois.readObject();
-                ois.close();
-                result.setCurrentLevel(levelNo);
-                FileOutputStream fos = new FileOutputStream("Save.cw");
-                ObjectOutputStream oos = new ObjectOutputStream(fos);
-                oos.writeObject(result);
-                oos.close();
-            }
-            catch (IOException ex) {
-                Logger.getLogger(GraphicManager.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            if(!possessor.isAI()){
+                try{
+                    FileInputStream fis = new FileInputStream("Save.cw");
+                    ObjectInputStream ois = new ObjectInputStream(fis);
+                    SavedData result = (SavedData) ois.readObject();
+                    ois.close();
+                    result.setCurrentLevel(levelNo);
+                    FileOutputStream fos = new FileOutputStream("Save.cw");
+                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                    oos.writeObject(result);
+                    oos.close();
+                }
+                catch (IOException ex) {
+                    Logger.getLogger(GraphicManager.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }    
             if(gameMode.equals("campaign")){
+                if(possessor.isAI())
+                    levelNo--;//repeat the level if you lost
                 removeAll();
                 run();
+                
             }
             else 
                   System.exit(0);//go to main menu here

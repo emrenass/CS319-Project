@@ -6,8 +6,16 @@
 package View;
 
 import Controller.NationType;
+import Model.SavedData;
 import java.awt.Container;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -104,6 +112,35 @@ public class GameMode extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void campaignButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campaignButtonActionPerformed
+        boolean enter = true;
+        File file = new File("Save.cw");
+        if(file.exists()){
+            final String message = 
+                "There is a saved game.\n"
+                + "You will lose your previous game.\n"
+                +"Do you want to continue?";
+            int reply = JOptionPane.showConfirmDialog(this, message,"Warning", JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE);
+            if(reply==JOptionPane.YES_OPTION)
+                System.out.println("Okay");
+            if(reply==JOptionPane.NO_OPTION)
+                enter = false;
+                
+        }
+        
+        if(enter)
+        {
+            try{
+                FileOutputStream fos = new FileOutputStream("Save.cw");
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                Object save = new SavedData(1);
+                oos.writeObject(save);
+                oos.close();
+            }
+            catch (IOException ex) {
+                Logger.getLogger(GraphicManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         GameView game = new GameView(1, "campaign", 1, NationType.Doth);
         game.copyFrameMain(frame);
         game.copyContentPaneMain(panel);

@@ -227,7 +227,7 @@ public class LoadGameWindow extends javax.swing.JPanel {
 
     private void mapLocationLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel2MouseClicked
         if(level>= 2){
-            GameView gw = new GameView(mapLocationLabel1.getLevelNumber(),"campaign",1,NationType.Azad);
+            GameView gw = new GameView(mapLocationLabel2.getLevelNumber(),"campaign",1,NationType.Azad);
             gw.copyFrameMain(frame);
             gw.copyContentPaneMain(panel);
             gw.Start();
@@ -238,7 +238,7 @@ public class LoadGameWindow extends javax.swing.JPanel {
 
     private void mapLocationLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel3MouseClicked
         if(level>= 3){
-            GameView gw = new GameView(mapLocationLabel1.getLevelNumber(),"campaign",2,NationType.Cult);
+            GameView gw = new GameView(mapLocationLabel3.getLevelNumber(),"campaign",2,NationType.Cult);
             gw.copyFrameMain(frame);
             gw.copyContentPaneMain(panel);
             gw.Start();
@@ -249,7 +249,7 @@ public class LoadGameWindow extends javax.swing.JPanel {
 
     private void mapLocationLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel4MouseClicked
         if(level>= 4){
-            GameView gw = new GameView(mapLocationLabel1.getLevelNumber(),"campaign",2,NationType.Azad);
+            GameView gw = new GameView(mapLocationLabel4.getLevelNumber(),"campaign",2,NationType.Azad);
             gw.copyFrameMain(frame);
             gw.copyContentPaneMain(panel);
             gw.Start();
@@ -260,7 +260,7 @@ public class LoadGameWindow extends javax.swing.JPanel {
 
     private void mapLocationLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapLocationLabel5MouseClicked
         if(level>= 5){
-            GameView gw = new GameView(mapLocationLabel1.getLevelNumber(),"campaign",3,NationType.Doth);
+            GameView gw = new GameView(mapLocationLabel5.getLevelNumber(),"campaign",3,NationType.Doth);
             gw.copyFrameMain(frame);
             gw.copyContentPaneMain(panel);
             gw.Start();

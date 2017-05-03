@@ -25,12 +25,8 @@ public class Map {
         this.AI = AI;
         
         BufferedImageLoader loader = new BufferedImageLoader();
-        
-        if(this.mapNo==1)
-            image=loader.loadImage("/Map1.png");
-        
-        if(this.mapNo==2)
-            image=loader.loadImage("/Untitled.png");
+        String mapName= "/Map"+this.mapNo+".png";
+        image=loader.loadImage(mapName);
         
        LoadImageLevel(image);
     }
@@ -69,11 +65,54 @@ public class Map {
                     listB.add(b);
                     gw.add(b);
                 }
+                if(red == 255 && green == 61 && blue == 213)
+                {
+                    //set army properties according to nation of the player here
+                    army.setPlayer(player);
+                    army.setProperties(player.getNation());
+                    Building b = new Building(xx*32, yy*32,handler, ObjectId.Building, army, player, "playerArsenal",false);
+                    b.setBounds(xx*32, yy*32, 32, 32);
+                    handler.addObject(b);
+                    listB.add(b);
+                    gw.add(b);
+                }
                 if(red==22 && green == 34 && blue == 255){
                     //set army properties according to nation of the player here
                     army.setPlayer(player);
                     army.setProperties(player.getNation());
                     Building b = new Building(xx*32, yy*32,handler, ObjectId.Building, army, player, "playerHospital",false);
+                    b.setBounds(xx*32, yy*32, 32, 32);
+                    handler.addObject(b);
+                    listB.add(b);
+                    gw.add(b);
+                }
+                if(red==50 && green ==255 && blue == 200){
+                    //set army properties according to nation of the player here
+                    army.setPlayer(AI);
+                    army.setProperties(AI.getNation());
+                    Building b = new Building(xx*32, yy*32,handler, ObjectId.Building, army, AI, "enemyHospital",false);
+                    b.setBounds(xx*32, yy*32, 32, 32);
+                    handler.addObject(b);
+                    listB.add(b);
+                    gw.add(b);
+                }
+                
+                if(red==59 && green == 255&& blue ==56 ){
+                    //set army properties according to nation of the player here
+                    army.setPlayer(AI);
+                    army.setProperties(AI.getNation());
+                    Building b = new Building(xx*32, yy*32,handler, ObjectId.Building, army, AI, "enemyTailor",false);
+                    b.setBounds(xx*32, yy*32, 32, 32);
+                    handler.addObject(b);
+                    listB.add(b);
+                    gw.add(b);
+                }
+                
+                if(red==255&& green ==191 && blue == 96){
+                    //set army properties according to nation of the player here
+                    army.setPlayer(player);
+                    army.setProperties(player.getNation());
+                    Building b = new Building(xx*32, yy*32,handler, ObjectId.Building, army, player, "playerTailor",false);
                     b.setBounds(xx*32, yy*32, 32, 32);
                     handler.addObject(b);
                     listB.add(b);

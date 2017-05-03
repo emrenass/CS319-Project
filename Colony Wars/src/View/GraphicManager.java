@@ -6,6 +6,7 @@
 package View;
 
 import Controller.NationType;
+import Controller.SoundManager;
 import Model.SavedData;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -33,9 +34,11 @@ public class GraphicManager extends javax.swing.JFrame {
      * Creates new form GraphicManager
      */
     SavedData save;
+    SoundManager sm; 
     public GraphicManager() {
-        
         initComponents();
+        sm = new SoundManager();
+        sm.Start();
     }
  
     /**
@@ -146,7 +149,8 @@ public class GraphicManager extends javax.swing.JFrame {
     }//GEN-LAST:event_creditsButtonActionPerformed
 
     private void soundSettingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soundSettingsButtonActionPerformed
-        // TODO add your handling code here:
+        sm.setVolume(0.0f);
+        sm.setEffect("cheer.wav");
     }//GEN-LAST:event_soundSettingsButtonActionPerformed
 
     private void loadGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameButtonActionPerformed
@@ -256,34 +260,7 @@ public static void main(String args[]) {
         /* Create and display the form */
                 new GraphicManager().setVisible(true);
                 
-                JFrame frame = new JFrame();
-        JLabel label1 = new JLabel("!!! For AI Testing you will always lose I made enemyArsenal damage (*20) so change it before coding");
-        JLabel label2 = new JLabel("!!! Read the comment for decideAttack in player class for AI");
-        JLabel label3 = new JLabel("!!! AI cant send true number of soldier for an unkown reason");
-        label1.setForeground(Color.red);
-        label2.setForeground(Color.blue);
-        label3.setForeground(Color.magenta);
-        frame.setLayout(null);
-        frame.setSize(800, 600);
-        label1.setBounds(0,0,800, 50);
-        label2.setBounds(0,100,800, 50);
-        label3.setBounds(0,200,800, 50);
-        frame.add(label1);
-        frame.add(label2);
-        frame.add(label3);
-        TimeLabel timelbl = new TimeLabel();
-        timelbl.setBounds(600,10,200,50);
-        frame.add(timelbl);
-        frame.setDefaultCloseOperation(HIDE_ON_CLOSE);
-        frame.show();
                 
-                /*JFrame frame = new JFrame();
-                WinLabel lbl = new WinLabel();
-                lbl.startAnimate();
-                frame.setSize(600, 600);
-                frame.add(lbl);
-                frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-                frame.show();*/
     }
 
 }

@@ -19,8 +19,8 @@ public class GameOptions extends javax.swing.JPanel {
      * Creates new form GameOptions
      */
     
-    private int diffucily;
-    private NationType nation;
+    private int diffucily=1;
+    private NationType nation=NationType.Azad;
     JFrame frame;
     Container panel;
     public GameOptions() {
