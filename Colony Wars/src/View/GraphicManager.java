@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.NationType;
 import Model.SavedData;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -187,7 +188,11 @@ public class GraphicManager extends javax.swing.JFrame {
             catch (IOException ex) {
                 Logger.getLogger(GraphicManager.class.getName()).log(Level.SEVERE, null, ex);
             }
-            GameView game = new GameView();
+            //Here we should get the game mode and then accordingly diff level and nation
+            String gameMode="campaign";//These should be taken from user 
+            int difficultyLevel=1;//These should be taken from user 
+            NationType playerNation=NationType.Cult;//These should be taken from user 
+            GameView game = new GameView(gameMode,difficultyLevel,playerNation);
             game.copyFrameMain(this);
             game.copyContentPaneMain(getContentPane());
             game.Start();

@@ -39,7 +39,7 @@ public class Player {
     
     This function only for AI.
     */
-    public ArrayList<Building> decideAttack(ArrayList<Building> build){
+    public ArrayList<Building> decideAttack(int difficultyLevel,ArrayList<Building> build){
         ArrayList<Building> aiBase = new ArrayList<Building>();
         ArrayList<Building> playerBase = new ArrayList<Building>();
         for(Building builds : build) {
@@ -51,18 +51,50 @@ public class Player {
             }
                 
         }
-        ArrayList<Building> returnBuild = new ArrayList<Building>();
-            for(Building aiBuild : aiBase)
-                for(Building posBuild : playerBase){
-                    if(aiBuild.getArmy().getArmySize()*aiBuild.getPossessor().getNation().getUnitDamage() > //nationın damage'i yerine direk building in armysinin damagina bakmak daha iyi olabilir
-                            posBuild.getArmy().getArmySize()*posBuild.getPossessor().getNation().getUnitDamage()) {//çünkü bina arsenalse damageları normalden yüksek
-                        //aiBuild.moveToBaseAI(posBuild);
-                        aiBuild.getArmy().setTargetBuilding(posBuild);
-                        returnBuild.add(aiBuild);
-                    }
-                        
+         ArrayList<Building> returnBuild = new ArrayList<Building>();
+        
+        if(difficultyLevel==1){
+                for(Building aiBuild : aiBase)
+                    for(Building posBuild : playerBase){
+                        if(aiBuild.getArmy().getArmySize()*aiBuild.getPossessor().getNation().getUnitDamage() > //nationın damage'i yerine direk building in armysinin damagina bakmak daha iyi olabilir
+                                posBuild.getArmy().getArmySize()*posBuild.getPossessor().getNation().getUnitDamage()) {//çünkü bina arsenalse damageları normalden yüksek
+                            //aiBuild.moveToBaseAI(posBuild);
+                            aiBuild.getArmy().setTargetBuilding(posBuild);
+                            returnBuild.add(aiBuild);
+                            System.out.println("only one army in list");
+                            return returnBuild;//only one army moves
+                        }
+                    }    
         }
-            return returnBuild;
+        else if(difficultyLevel==2){
+            int decidedNum=0;
+                for(Building aiBuild : aiBase)
+                    for(Building posBuild : playerBase){
+                        if(aiBuild.getArmy().getArmySize()*aiBuild.getPossessor().getNation().getUnitDamage() > //nationın damage'i yerine direk building in armysinin damagina bakmak daha iyi olabilir
+                                posBuild.getArmy().getArmySize()*posBuild.getPossessor().getNation().getUnitDamage()) {//çünkü bina arsenalse damageları normalden yüksek
+                            //aiBuild.moveToBaseAI(posBuild);
+                            aiBuild.getArmy().setTargetBuilding(posBuild);
+                            returnBuild.add(aiBuild);
+                            if(decidedNum++>0)
+                                return returnBuild;
+                        }
+
+            }
+        }
+        else if(difficultyLevel==3){
+                for(Building aiBuild : aiBase)
+                    for(Building posBuild : playerBase){
+                        if(aiBuild.getArmy().getArmySize()*aiBuild.getPossessor().getNation().getUnitDamage() > //nationın damage'i yerine direk building in armysinin damagina bakmak daha iyi olabilir
+                                posBuild.getArmy().getArmySize()*posBuild.getPossessor().getNation().getUnitDamage()) {//çünkü bina arsenalse damageları normalden yüksek
+                            //aiBuild.moveToBaseAI(posBuild);
+                            aiBuild.getArmy().setTargetBuilding(posBuild);
+                            returnBuild.add(aiBuild);
+                            return returnBuild;
+                        }
+
+            }
+        }
+        return returnBuild;
     }
     
     public Nation getNation() {

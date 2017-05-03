@@ -13,6 +13,7 @@ import Controller.Map;
 import Controller.Nation;
 import Controller.NationType;
 import Controller.ObjectId;
+import Controller.Objective;
 import Controller.Player;
 import Model.SavedData;
 import java.awt.*;
@@ -57,6 +58,9 @@ public class GameView extends JPanel implements Runnable
     private int clickCount = 0;
     private int levelNo=1;
     //trying
+    private String gameMode="Skirmish";
+    private int difficultyLevel = 1;
+    private NationType playerNation = NationType.Doth;
     JLabel label;
     ArrayList<Building> actionBuildings = new ArrayList<Building>();
     ArrayList<Building> listB = new ArrayList<Building>();
@@ -79,10 +83,17 @@ public class GameView extends JPanel implements Runnable
         
     }
     
-    public GameView(int levelNo){
+    public GameView(int levelNo,String gameMode, int difficultyLevel, NationType playerNation){
         this.levelNo=levelNo;
+        this.gameMode = gameMode;
+        this .difficultyLevel=difficultyLevel;
+        this.playerNation = playerNation;
     }
-    
+    public GameView(String gameMode, int difficultyLevel, NationType playerNation){
+        this.gameMode = gameMode;
+        this .difficultyLevel=difficultyLevel;
+        this.playerNation = playerNation;
+    }
     
     public synchronized void Start()
     {
@@ -141,7 +152,7 @@ public class GameView extends JPanel implements Runnable
         
         //trying
         AI = new Player(new Nation(NationType.Cult),true);
-        player = new Player(new Nation(NationType.Doth), false);
+        player = new Player(new Nation(playerNation), false);
         
        
         ResetAllLists();
@@ -211,6 +222,7 @@ public class GameView extends JPanel implements Runnable
             {
                 llTime = now;
                 gameOver();
+                AIAction();
             }
             
         }
@@ -254,8 +266,8 @@ public class GameView extends JPanel implements Runnable
         /*The method decideAttack called here if the decided is not null it uses the same logic
         to move it's armies same with player logic        
         */
-        
-       ArrayList<Building> decided = AI.decideAttack(listB);
+        /*
+       ArrayList<Building> decided = AI.decideAttack(difficultyLevel,listB);
        if(decided.size() > 0) {
            for(Building decidedBuilding : decided) {
             Army movingArmy = decidedBuilding.moveToBaseAI(decidedBuilding.getArmy().getTargetBuilding());
@@ -265,42 +277,54 @@ public class GameView extends JPanel implements Runnable
             add(label);
            }
        }
-       
+       */
     }
     
     public void fixedUpdate()
     {
         
         for(int i=0;i<movingArmies.size();i++)
-                {
-                    JLabel label = movingLabels.get(i);
-                    Army army = movingArmies.get(i);
+        {
+            JLabel label = movingLabels.get(i);
+            Army army = movingArmies.get(i);
                     
                     
-                    label.setText(""+army.getArmySize());
+            label.setText(""+army.getArmySize());
                     
-                    boolean done = army.move();
-                    if(done)
-                    {
-                        try {
-                            //collision
-                            System.out.println("");
-                            army.collide();
-                        } catch (IOException ex) {
-                            Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+            boolean done = army.move();
+            if(done)
+            {
+                try {
+                    //collision
+                    System.out.println("");
+                    army.collide();
+                } catch (IOException ex) {
+                    Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
+                }
                
                         
-                        remove(label);
-                        movingArmies.remove(i);
-                        movingLabels.remove(i);
-                    }
-                    label.setLocation((int)army.getLocX(),(int)army.getLocY());
-                    //label.setLocation(army.getSpeed()+label.getX(),army.getSpeed()+label.getY());
-                    
-               }
+                remove(label);
+                movingArmies.remove(i);
+                movingLabels.remove(i);
+            }
+            label.setLocation((int)army.getLocX(),(int)army.getLocY());
+            //label.setLocation(army.getSpeed()+label.getX(),army.getSpeed()+label.getY());
+        }
+        
     }
-    
+    public void AIAction()
+    {
+        ArrayList<Building> decided = AI.decideAttack(difficultyLevel,listB);
+        if(decided.size() > 0) {
+           for(Building decidedBuilding : decided) {
+            Army movingArmy = decidedBuilding.moveToBaseAI(decidedBuilding.getArmy().getTargetBuilding());
+            JLabel label =movingArmy;
+            movingLabels.add(label);
+            movingArmies.add(movingArmy);
+            add(label);
+           }
+       }
+    }
     public void gameOver(){
         //This function will change place
         for(Building builds : listB) {
@@ -308,15 +332,13 @@ public class GameView extends JPanel implements Runnable
         }
         /////////////////////////////
         
-        boolean gameOver=true;
-        Player possessor = listB.get(0).getPossessor();
-        for( Building b :listB){
-        gameOver = (possessor == b.getPossessor()) && gameOver;
-        System.out.println("Type: "+ b.getBuildingType()+ " Size: " + b.getArmy().getArmySize());
-        }
+        Objective obj = new Objective(levelNo-1,true,listB);
+        Player possessor = obj.checkObjectiveStatus();
+        
+        
         
 
-        if(gameOver){
+        if(obj.isObjectiveAchieved()){
             long startWinTime = System.nanoTime();
             long nowWinTime = System.nanoTime();
             boolean started = false;
@@ -357,10 +379,12 @@ public class GameView extends JPanel implements Runnable
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
             }
-            removeAll();
-            gameOver=false;
-            run();
-
+            if(gameMode.equals("campaign")){
+                removeAll();
+                run();
+            }
+            else 
+                  System.exit(0);//go to main menu here
         }
     }
     
