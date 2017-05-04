@@ -6,10 +6,13 @@ public class Objective {
     int objectiveID;
     boolean objectiveAchieved;
     ArrayList<Building> listB;
-    public Objective(int objectiveID, boolean objectiveAchieved, ArrayList<Building> listB) {
+    private Building AIArsenal,playerArsenal;
+    public Objective(int objectiveID, boolean objectiveAchieved, ArrayList<Building> listB,Building AIArsenal,Building playerArsenal) {
         this.objectiveID = objectiveID;
         this.objectiveAchieved = objectiveAchieved;
         this.listB=listB;
+        this.AIArsenal=AIArsenal;
+        this.playerArsenal=playerArsenal;
     }
 
     public boolean isObjectiveAchieved() {
@@ -19,7 +22,7 @@ public class Objective {
     public Player checkObjectiveStatus() {
         Player winner=null;
         
-        if(objectiveID==1){
+        if(objectiveID==1 || objectiveID==4 ){
             objectiveAchieved=true;
             Player possessor = listB.get(0).getPossessor();
             for( Building b :listB){
@@ -28,7 +31,7 @@ public class Objective {
             }
         }    
         
-        if(objectiveID==2){
+        if(objectiveID==2 || objectiveID==5){
             objectiveAchieved=false;
             int AIArmySize=0;
             int playerArmySize=0;
@@ -54,18 +57,21 @@ public class Objective {
         }
         
         if(objectiveID==3){
-            objectiveAchieved=true;
-            Player possessor = listB.get(0).getPossessor();
-            for( Building b :listB){
-            objectiveAchieved = (possessor == b.getPossessor()) && objectiveAchieved;  
-            winner = possessor;
+            System.out.println("Im in 3rd objective");
+            objectiveAchieved=false;
+          
+            if(AIArsenal ==null)System.out.println("buneamk");
+            if(playerArsenal ==null)System.out.println("buneamk2");
+            if(!AIArsenal.getPossessor().isAI()){
+                winner=new Player(null,false);
+                objectiveAchieved=true;
             }
-        }    
-        if(objectiveID==4){
-        }    
+            if(playerArsenal.getPossessor().isAI()){
+                winner=new Player(null,true);
+                objectiveAchieved=true;
+            }
+        }
         
-         if(objectiveID==5){
-        }    
         return winner;
     }
     

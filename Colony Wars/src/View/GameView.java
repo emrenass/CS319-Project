@@ -73,6 +73,8 @@ public class GameView extends JPanel implements Runnable
     PauseMenu pause;
     WinLabel winlabel;
     TimeLabel timeLabel;
+    Building playerArsenal;
+    Building AIArsenal;
     
     double amountOfTicks = 60.0;
     double ns = 1000000000 / amountOfTicks;
@@ -160,7 +162,19 @@ public class GameView extends JPanel implements Runnable
         
         revalidate();
         repaint();
+        
+     
+        
         Map map = new Map(levelNo++,this, handler,listB,player,  AI);
+        //this part is for objective 4
+           for(Building b : listB)
+        {
+                if(b.getBuildingType().equalsIgnoreCase("playerArsenal"))
+                    playerArsenal=b;
+                
+                if(b.getBuildingType().equalsIgnoreCase("enemyArsenal"))
+                    AIArsenal = b;
+        }
         
     }
     
@@ -332,8 +346,7 @@ public class GameView extends JPanel implements Runnable
             builds.increaseArmySize();
         }
         /////////////////////////////
-        
-        Objective obj = new Objective(levelNo-1,true,listB);
+        Objective obj = new Objective(levelNo-1,true,listB,AIArsenal,playerArsenal);
         Player possessor = obj.checkObjectiveStatus();
         
         
