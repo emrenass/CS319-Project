@@ -5,6 +5,7 @@ import java.net.URL;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 
@@ -13,6 +14,9 @@ public class SoundManager implements Runnable
     private boolean running = false;
     private Thread thread;
     public boolean playSong = false;
+    public String url;
+    public Clip clip, clip1;
+    public long clipTime;
     
     public SoundManager()
     {
@@ -22,8 +26,7 @@ public class SoundManager implements Runnable
     public boolean isPlaySong() {
         return playSong;
     }
-    public String url;
-    public Clip clip, clip1;
+    
 
 
    public synchronized void Start()
@@ -33,6 +36,7 @@ public class SoundManager implements Runnable
         
         running = true;
         thread = new Thread(this);
+        playSong = true;
         thread.start();
     }
 
@@ -44,7 +48,8 @@ public class SoundManager implements Runnable
         { 
           //URL defaultSound = this.getClass().getResourceAsStream("/Sound/deneme.wav"); 
           AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(getClass().getResourceAsStream("/Sounds/Intro.wav"));
-          clip = AudioSystem.getClip();
+          DataLine.Info info = new DataLine.Info(Clip.class, audioInputStream.getFormat());
+          clip = (Clip)AudioSystem.getLine(info);
           clip.open(audioInputStream);
           clip.loop(Clip.LOOP_CONTINUOUSLY);
           
@@ -59,12 +64,18 @@ public class SoundManager implements Runnable
 
     public void Pause()
     {
-        if(this.clip != null)
-        {
-            clip.stop();
-            clip.loop(-1);
-            clip.close();
-        }
+        clipTime = clip.getMicrosecondPosition();
+        clip.stop();
+        playSong = false;
+
+    }
+    
+    public void Resume()
+    {
+        clip.setMicrosecondPosition(clipTime);
+        clip.start();
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
+        playSong = true;
 
     }
     
