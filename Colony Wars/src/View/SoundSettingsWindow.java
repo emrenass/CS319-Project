@@ -44,17 +44,17 @@ public class SoundSettingsWindow extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(200, 400));
         setLayout(null);
 
-        soundControl.setMaximum(5);
-        soundControl.setMinimum(-80);
+        soundControl.setMaximum(100);
+        soundControl.setMinimum(0);
         soundControl.setMinorTickSpacing(1);
-        soundControl.setValue(-37);
+        soundControl.setValue(50);
         soundControl.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 soundControlStateChanged(evt);
             }
         });
         add(soundControl);
-        soundControl.setBounds(6, 82, 190, 29);
+        soundControl.setBounds(6, 82, 200, 26);
 
         muteButton.setText("Mute");
         muteButton.setToolTipText("");
@@ -64,7 +64,7 @@ public class SoundSettingsWindow extends javax.swing.JPanel {
             }
         });
         add(muteButton);
-        muteButton.setBounds(121, 162, 75, 29);
+        muteButton.setBounds(121, 162, 61, 25);
 
         saveButton.setText("Save & Exit");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -73,12 +73,12 @@ public class SoundSettingsWindow extends javax.swing.JPanel {
             }
         });
         add(saveButton);
-        saveButton.setBounds(6, 6, 113, 29);
+        saveButton.setBounds(6, 6, 97, 25);
     }// </editor-fold>//GEN-END:initComponents
 
     private void soundControlStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_soundControlStateChanged
         soundControl = (JSlider)evt.getSource();
-        int sound = (int)soundControl.getValue();
+        float sound = (float)soundControl.getValue()/100;
         GraphicManager.sm.setVolume(sound);
     
     }//GEN-LAST:event_soundControlStateChanged

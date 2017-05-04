@@ -79,11 +79,12 @@ public class SoundManager implements Runnable
 
     }
     
-    public void setVolume(int number)
+    public void setVolume(float number)
     {
-        FloatControl gainControl = 
-            (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            gainControl.setValue(number);
+        if (number < 0f || number > 1f)
+        throw new IllegalArgumentException("Volume not valid: " + number);
+        FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);        
+    gainControl.setValue(20f * (float) Math.log10(number));
     }
     
     public void setEffect(String url)
