@@ -55,7 +55,7 @@ public class GraphicManager extends javax.swing.JFrame {
         soundSettingsButton = new javax.swing.JButton();
         creditsButton = new javax.swing.JButton();
         exitButton = new javax.swing.JButton();
-        tutorialButton2 = new javax.swing.JButton();
+        tutorialButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -117,16 +117,16 @@ public class GraphicManager extends javax.swing.JFrame {
         });
         getContentPane().add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 140, -1));
 
-        tutorialButton2.setText("Tutorial");
-        tutorialButton2.setMaximumSize(new java.awt.Dimension(111, 32));
-        tutorialButton2.setMinimumSize(new java.awt.Dimension(111, 32));
-        tutorialButton2.setPreferredSize(new java.awt.Dimension(111, 32));
-        tutorialButton2.addActionListener(new java.awt.event.ActionListener() {
+        tutorialButton.setText("Tutorial");
+        tutorialButton.setMaximumSize(new java.awt.Dimension(111, 32));
+        tutorialButton.setMinimumSize(new java.awt.Dimension(111, 32));
+        tutorialButton.setPreferredSize(new java.awt.Dimension(111, 32));
+        tutorialButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tutorialButton2ActionPerformed(evt);
+                tutorialButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(tutorialButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 140, -1));
+        getContentPane().add(tutorialButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 140, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/wallpaper.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
@@ -169,48 +169,6 @@ public class GraphicManager extends javax.swing.JFrame {
     }//GEN-LAST:event_loadGameButtonActionPerformed
 
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
-        /*boolean enter = true;
-        File file = new File("Save.cw");
-        if(file.exists()){
-            final String message = 
-                "There is a saved game.\n"
-                + "You will lose your previous game.\n"
-                +"Do you want to continue?";
-            int reply = JOptionPane.showConfirmDialog(this, message,"Warning", JOptionPane.YES_NO_OPTION,
-                    JOptionPane.WARNING_MESSAGE);
-            if(reply==JOptionPane.YES_OPTION)
-                System.out.println("Okay");
-            if(reply==JOptionPane.NO_OPTION)
-                enter = false;
-                
-        }
-        
-        if(enter)
-        {
-            try{
-                FileOutputStream fos = new FileOutputStream("Save.cw");
-                ObjectOutputStream oos = new ObjectOutputStream(fos);
-                save = new SavedData(1);
-                oos.writeObject(save);
-                oos.close();
-            }
-            catch (IOException ex) {
-                Logger.getLogger(GraphicManager.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            //Here we should get the game mode and then accordingly diff level and nation
-            String gameMode="campaign";//These should be taken from user 
-            int difficultyLevel=1;//These should be taken from user 
-            NationType playerNation=NationType.Cult;//These should be taken from user 
-            GameView game = new GameView(gameMode,difficultyLevel,playerNation);
-            game.copyFrameMain(this);
-            game.copyContentPaneMain(getContentPane());
-            game.Start();
-            setContentPane(game);
-
-            this.invalidate();
-            this.validate();
-        }*/
-        
         GameMode gMode = new GameMode();
         gMode.copyFrameMain(this);
         gMode.copyContentPaneMain(getContentPane());
@@ -219,9 +177,14 @@ public class GraphicManager extends javax.swing.JFrame {
         this.validate();
     }//GEN-LAST:event_newGameButtonActionPerformed
 
-    private void tutorialButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tutorialButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tutorialButton2ActionPerformed
+    private void tutorialButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tutorialButtonActionPerformed
+        TutorialWindow tw = new TutorialWindow();
+        tw.copyFrameMain(this);
+        tw.copyContentPaneMain(getContentPane());
+        setContentPane(tw);
+        this.invalidate();
+        this.validate();
+    }//GEN-LAST:event_tutorialButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -231,7 +194,7 @@ public class GraphicManager extends javax.swing.JFrame {
     private javax.swing.JButton loadGameButton;
     private javax.swing.JButton newGameButton;
     private javax.swing.JButton soundSettingsButton;
-    private javax.swing.JButton tutorialButton2;
+    private javax.swing.JButton tutorialButton;
     // End of variables declaration//GEN-END:variables
 
 public static void main(String args[]) {
