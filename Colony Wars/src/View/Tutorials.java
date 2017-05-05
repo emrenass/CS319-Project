@@ -41,9 +41,9 @@ public class Tutorials extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(400, 750));
-        setMinimumSize(new java.awt.Dimension(400, 750));
-        setPreferredSize(new java.awt.Dimension(400, 750));
+        setMaximumSize(new java.awt.Dimension(400, 1000));
+        setMinimumSize(new java.awt.Dimension(400, 1000));
+        setPreferredSize(new java.awt.Dimension(400, 1000));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/enemyArsenal.png"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -93,7 +93,31 @@ public class Tutorials extends javax.swing.JPanel {
 
         jLabel12.setText("Player Tailor");
 
-        jLabel13.setText("<html>Colony Wars has two game modes<BR>Skirmish Game Mode: You just play to have fun<BR>Campagin Game Mode: You try to achieve the objectives</html>");
+        jLabel13.setText("<html>Colony Wars is a time based strategy game that requires usage of a considerable</BR>"
+            + "amount of strategical thinking. Game map basically consists of 2 main bases for each player</BR>"
+            + "and several neutral bases that both players seeking to possess. The main purpose in the game</BR>"
+            + "is to get control of all the bases in the game. Every base produces number of soldiers by time</BR>"
+            + "passing. In order to get control of a base you need to have required amount of soldiers in it if</BR>"
+            + "it is a neutral base, if it is an enemy base though you need to send more soldiers than enemy</BR>"
+            + "soldiers that currently present in that base. There are several games similar to Colony Wars</BR>"
+            + "currently on market to the writer’s knowledge that are popular one of them being Mushroom</BR>"
+            + "Wars. The game also has variations of three nations each having advantage in one or more</BR>"
+            + "of the soldier traits which are speed, production rate and soldier damage. First nation called</BR>"
+            + "Cult has a greater speed and damage compared to other nations thanks to it greatly developed</BR>"
+            + "weapons and clothing although the production rate of their species are low. Another nation in</BR>"
+            + "the game is called Azad having faster production rates and movement speed compared to</BR>"
+            + "others. They have smaller body sizes and are less developed which makes them fast and </BR>"
+            + "increases their reproduction rates since less developed species produce more often. However</BR>"
+            + "they have the drawback of having less damage than other species because of their small body</BR>"
+            + "sizes. The last nation in the game is called Doth which is a male dominant colony with males</BR>"
+            + "having more than one wife and are stronger compared to other species. However the nation is</BR>"
+            + "considerably behind in sciences and technologies which come with the drawback to their</BR>"
+            + "soldiers being slow compared to others.</BR>"
+            + "The game will also have a campaign mode which includes a series of games all</BR>"
+            + "having different objectives. Some examples for these varying objectives are as following:</BR>"
+            + "- Capturing all bases.</BR>"
+            + "- Capturing a particular base.</BR>"
+            + "- Reaching a particular amount of soldiers.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -133,8 +157,8 @@ public class Tutorials extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 712, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -158,7 +182,7 @@ public class Tutorials extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
